@@ -223,7 +223,7 @@
 </section>
 
 <!-- ═══ RECORRIDO VIRTUAL – VIDEO ═══ -->
-<section class="video-section" id="recorrido">
+<section class="video-section" id="recorrido" style="padding: clamp(2rem, 5vw, 6rem) 0;">
   <div class="container">
     <div class="section-header" style="position:relative; z-index:1; margin-bottom:3rem;">
       <span class="section-label fade-in" style="background:rgba(21,101,192,0.2); color:var(--blue-light); display:inline-block;">Recorrido Virtual</span>
@@ -261,8 +261,9 @@
       </div>
 
       <div class="fade-in fade-in-delay-1">
-        <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06);">
+        <div style="margin-bottom:1rem; padding-bottom:1rem; border-bottom:1px solid rgba(255,255,255,0.06); display:flex; align-items:center; justify-content:space-between;">
           <p style="color:rgba(255,255,255,0.4); font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Lista de videos</p>
+          <p style="color:rgba(255,255,255,0.25); font-size:0.72rem; display:none;" class="mobile-scroll-hint">← Desliza →</p>
         </div>
         <div class="video-list" id="videoList"></div>
       </div>
