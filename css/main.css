@@ -1249,3 +1249,75 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 768px) {
   .mobile-scroll-hint { display: block !important; }
 }
+
+/* ═══════════════════════════════════════
+   RECORRIDO PAGE — MOBILE FIX
+   ═══════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* Reduce padding en hero de recorrido */
+  .vp-hero { padding: 5.5rem 0 2rem !important; }
+
+  /* Layout apilado */
+  .rec-layout {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* Video más compacto — NO ocupa toda la pantalla */
+  .main-player {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+  .main-player.landscape {
+    aspect-ratio: 16/9 !important;
+    max-height: 240px !important;
+  }
+  .main-player.portrait {
+    aspect-ratio: 9/16 !important;
+    max-height: 320px !important;
+    max-width: 180px !important;
+    margin: 0 auto !important;
+  }
+
+  /* Playlist horizontal con scroll táctil */
+  .playlist {
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    max-height: none !important;
+    gap: .7rem !important;
+    padding-bottom: 10px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none;
+  }
+  .playlist::-webkit-scrollbar { display: none !important; }
+
+  .pitem {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-width: 140px !important;
+    max-width: 140px !important;
+    scroll-snap-align: start;
+    gap: .45rem !important;
+    padding: .6rem !important;
+  }
+  .pthumb {
+    width: 100% !important;
+    height: 76px !important;
+  }
+  .pnum { display: none !important; }
+  .pinfo strong { font-size: .76rem !important; white-space: normal !important; }
+  .pinfo span   { font-size: .67rem !important; }
+
+  /* Scroll hint visible */
+  #scrollHint { display: block !important; }
+
+  /* UCI cards — 1 columna en pantallas muy pequeñas */
+}
+@media (max-width: 480px) {
+  .main-player.landscape { max-height: 200px !important; }
+  .main-player.portrait  { max-height: 260px !important; max-width: 150px !important; }
+  .pitem { min-width: 125px !important; max-width: 125px !important; }
+  .pthumb { height: 65px !important; }
+}
