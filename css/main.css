@@ -1254,32 +1254,32 @@ a { text-decoration: none; color: inherit; }
    RECORRIDO PAGE — MOBILE FIX
    ═══════════════════════════════════════ */
 @media (max-width: 900px) {
-  /* Reduce padding en hero de recorrido */
-  .vp-hero { padding: 5.5rem 0 2rem !important; }
+  .vp-hero { padding: 5.5rem 0 1.5rem !important; }
 
-  /* Layout apilado */
   .rec-layout {
     grid-template-columns: 1fr !important;
     gap: 1rem !important;
   }
 
-  /* Video más compacto — NO ocupa toda la pantalla */
-  .main-player {
-    max-width: 100% !important;
-    margin: 0 !important;
-  }
+  /* Landscape (16:9) — ancho completo, altura proporcional */
   .main-player.landscape {
     aspect-ratio: 16/9 !important;
-    max-height: 240px !important;
-  }
-  .main-player.portrait {
-    aspect-ratio: 9/16 !important;
-    max-height: 320px !important;
-    max-width: 180px !important;
-    margin: 0 auto !important;
+    max-height: none !important;
+    width: 100% !important;
+    margin: 0 !important;
   }
 
-  /* Playlist horizontal con scroll táctil */
+  /* Portrait (9:16 Shorts) — centrado y compacto */
+  .main-player.portrait {
+    width: 55% !important;
+    max-width: 220px !important;
+    aspect-ratio: 9/16 !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+    display: block !important;
+  }
+
+  /* Playlist horizontal scroll */
   .playlist {
     flex-direction: row !important;
     overflow-x: auto !important;
@@ -1296,28 +1296,39 @@ a { text-decoration: none; color: inherit; }
   .pitem {
     flex-direction: column !important;
     align-items: flex-start !important;
-    min-width: 140px !important;
-    max-width: 140px !important;
+    min-width: 130px !important;
+    max-width: 130px !important;
     scroll-snap-align: start;
-    gap: .45rem !important;
-    padding: .6rem !important;
+    gap: .4rem !important;
+    padding: .55rem !important;
   }
   .pthumb {
     width: 100% !important;
-    height: 76px !important;
+    height: 72px !important;
   }
   .pnum { display: none !important; }
-  .pinfo strong { font-size: .76rem !important; white-space: normal !important; }
-  .pinfo span   { font-size: .67rem !important; }
-
-  /* Scroll hint visible */
+  .pinfo strong { font-size: .74rem !important; white-space: normal !important; }
+  .pinfo span   { font-size: .65rem !important; }
   #scrollHint { display: block !important; }
 
-  /* UCI cards — 1 columna en pantallas muy pequeñas */
+  /* UCI cards — siempre 3 columnas */
+  .uci-grid-3 {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: .6rem !important;
+  }
+  .uci-grid-3 > div > div:first-child { height: 110px !important; }
+  .uci-grid-3 h4 { font-size: .8rem !important; margin-bottom: .2rem !important; }
+  .uci-grid-3 p  { font-size: .72rem !important; }
 }
+
 @media (max-width: 480px) {
-  .main-player.landscape { max-height: 200px !important; }
-  .main-player.portrait  { max-height: 260px !important; max-width: 150px !important; }
-  .pitem { min-width: 125px !important; max-width: 125px !important; }
-  .pthumb { height: 65px !important; }
+  .main-player.portrait {
+    width: 70% !important;
+    max-width: 200px !important;
+  }
+  .pitem { min-width: 118px !important; max-width: 118px !important; }
+  .pthumb { height: 62px !important; }
+  .uci-grid-3 > div > div:first-child { height: 90px !important; }
+  .uci-grid-3 h4 { font-size: .72rem !important; }
+  .uci-grid-3 p  { font-size: .66rem !important; }
 }
