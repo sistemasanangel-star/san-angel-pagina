@@ -164,12 +164,14 @@
 
       <!-- PLAYER -->
       <div id="playerWrap" style="text-align:center;">
-        <div class="main-player landscape" id="playerBox" style="display:inline-block; width:100%; text-align:left;">
+        <div class="main-player landscape" id="playerBox"
+             style="position:relative; width:100%; padding-bottom:56.25%; display:block;">
           <iframe id="mainFrame"
-            src=""
+            src="https://www.youtube-nocookie.com/embed/x-g8DHKuoIQ?rel=0&modestbranding=1&playsinline=1&autoplay=1&mute=1"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
+            allowfullscreen
+            style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;">
           </iframe>
         </div>
         <div class="now-bar" style="margin-top:1.2rem;">
@@ -282,9 +284,17 @@ function play(i) {
   const v = VIDEOS[i];
   current = i;
 
-  // Switch aspect ratio for shorts vs normal
+  // Switch aspect ratio using padding-bottom trick
   const box = document.getElementById('playerBox');
-  box.className = 'main-player ' + (v.short ? 'portrait' : 'landscape');
+  if (v.short) {
+    box.style.paddingBottom = '177.78%';
+    box.style.maxWidth = '280px';
+    box.style.margin = '0 auto';
+  } else {
+    box.style.paddingBottom = '56.25%';
+    box.style.maxWidth = '100%';
+    box.style.margin = '0';
+  }
 
   // Set iframe src
   document.getElementById('mainFrame').src = embedUrl(v);
