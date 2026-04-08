@@ -2,465 +2,318 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Procedimientos Quirúrgicos – Hospital San Ángel Chimaltenango</title>
-  <meta name="description" content="Procedimientos quirúrgicos 24 horas: histerectomía, apendicectomía, cesáreas, hernioplastia, colecistectomía y más. Hospital San Ángel, Chimaltenango.">
   <link rel="stylesheet" href="../css/main.css">
-  <style>
-    /* ── TARJETAS DE PROCEDIMIENTO PARA PACIENTES ── */
-    .proc-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 1.5rem;
-    }
-    .proc-card {
-      background: var(--white);
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--gray-200);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: var(--transition);
-      display: flex;
-      flex-direction: column;
-    }
-    .proc-card:hover {
-      box-shadow: var(--shadow-md);
-      transform: translateY(-4px);
-      border-color: rgba(21,101,192,0.2);
-    }
-    .proc-card-header {
-      background: var(--navy);
-      padding: 1.4rem 1.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-    .proc-card-header h3 {
-      color: var(--white);
-      font-size: 1.1rem;
-      margin: 0;
-    }
-    .proc-price-tag {
-      background: var(--blue);
-      color: var(--white);
-      border-radius: 10px;
-      padding: 5px 14px;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .proc-card-body {
-      padding: 1.4rem 1.6rem;
-      flex: 1;
-    }
-    .proc-includes-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--blue);
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .proc-includes-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--blue-pale);
-    }
-    .proc-list {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-    }
-    .proc-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 9px;
-      padding: 0.38rem 0;
-      font-size: 0.875rem;
-      color: var(--gray-700);
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .proc-list li:last-child { border-bottom: none; }
-    .proc-list li .ck {
-      color: var(--blue);
-      font-weight: 700;
-      flex-shrink: 0;
-      margin-top: 1px;
-      font-size: 0.85rem;
-    }
-    .proc-note {
-      margin-top: 1rem;
-      padding: 0.7rem 1rem;
-      background: #FFF8E1;
-      border-left: 3px solid #FFB300;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.82rem;
-      color: #5D4037;
-    }
-    .proc-note strong { color: #E65100; }
-  </style>
 </head>
 <body>
-
 <div id="header-root"></div>
 
-<!-- PAGE HERO -->
+<!-- HERO -->
 <section class="page-hero">
-  <div class="container">
-    <div class="breadcrumb">
-      <a href="../index.html">Inicio</a>
-      <span>›</span>
-      <span>Procedimientos</span>
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="breadcrumb fade-in">
+      <a href="../index.html">Inicio</a><span>›</span><span>Procedimientos</span>
     </div>
-    <h1 class="fade-in">Procedimientos Quirúrgicos</h1>
-    <p class="fade-in fade-in-delay-1">Quirófano completamente equipado disponible las 24 horas, con atención médica especializada.</p>
+    <span class="section-label fade-in">Cirugía</span>
+    <h1 class="fade-in fade-in-delay-1">Procedimientos Quirúrgicos</h1>
+    <p class="fade-in fade-in-delay-2">Quirófano equipado disponible las 24 horas. Cirugías programadas y de urgencia con los más altos estándares de seguridad.</p>
   </div>
 </section>
 
+<!-- QUÉ INCLUYE -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">Incluido en todos los procedimientos</span>
+      <h2 class="section-title">Todo lo que necesitas</h2>
+      <p class="section-desc">Nuestros paquetes quirúrgicos incluyen todo lo necesario para tu recuperación.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:900px;margin:0 auto;" class="fade-in">
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">🏥</div>
+        <h4>Sala de operaciones</h4>
+        <p>Quirófano completamente equipado y esterilizado</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">🛏️</div>
+        <h4>Encamamiento y alimentación</h4>
+        <p>Habitación con comidas incluidas durante tu estadía</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">👨‍⚕️</div>
+        <h4>Atención médica y enfermería</h4>
+        <p>Personal especializado disponible las 24 horas</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">🔬</div>
+        <h4>Laboratorios pre-operatorios</h4>
+        <p>Estudios básicos incluidos en el paquete</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">💉</div>
+        <h4>Antibiótico y analgésico</h4>
+        <p>Ceftriaxona, Diclofenaco y soluciones intravenosas incluidas en el paquete</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div class="card-icon" style="margin:0 auto 1rem;">🧴</div>
+        <h4>Materiales y desechables</h4>
+        <p>Suturas, sondas y todo el material quirúrgico</p>
+      </div>
+    </div>
+    <div class="notice-box fade-in" style="max-width:700px;margin:2rem auto 0;">
+      <p>ℹ️ Exámenes adicionales, habitación privada y complicaciones tienen costo adicional con previa autorización. El precio puede variar según la edad del paciente.</p>
+    </div>
+  </div>
+</section>
 
-<!-- DETALLE POR PROCEDIMIENTO PARA PACIENTES -->
+<!-- PROCEDIMIENTOS CON PRECIOS OCULTOS -->
 <section class="section section-alt">
   <div class="container">
     <div class="section-header">
-      <span class="section-label fade-in">¿Qué incluye tu procedimiento?</span>
-      <h2 class="section-title fade-in fade-in-delay-1">Detalle por Procedimiento</h2>
-      <p class="section-desc fade-in fade-in-delay-2">Para que sepas exactamente qué está cubierto en cada procedimiento.</p>
+      <span class="section-label">Precios</span>
+      <h2 class="section-title">Nuestros Procedimientos</h2>
+      <p class="section-desc">Selecciona cualquier procedimiento para conocer su precio. También puedes consultarnos directamente.</p>
     </div>
 
-    <div class="proc-grid">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;" class="fade-in">
 
-      <!-- HISTERECTOMÍA -->
-      <div class="proc-card fade-in" id="histerectomia">
-        <div class="proc-card-header">
-          <h3>🏥 Histerectomía</h3>
-          <span class="proc-price-tag">Q6,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico: 3 dosis de Ceftriaxona</li>
-            <li><span class="ck">✓</span> Analgésico: 6 dosis de Diclofenaco</li>
-            <li><span class="ck">✓</span> 3 soluciones intravenosas</li>
-            <li><span class="ck">✓</span> Sonda Foley y bolsa recolectora</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Histerectomía -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Histerectomía</h3>
+        <p class="proc-desc">Extirpación del útero. Cirugía ginecológica mayor.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Histerectomía?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- APENDICECTOMÍA -->
-      <div class="proc-card fade-in fade-in-delay-1" id="apendicectomia">
-        <div class="proc-card-header">
-          <h3>⚕️ Apendicectomía</h3>
-          <span class="proc-price-tag">Q6,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico: 3 dosis de Ceftriaxona</li>
-            <li><span class="ck">✓</span> Analgésico: 6 dosis de Diclofenaco</li>
-            <li><span class="ck">✓</span> 3 soluciones intravenosas</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Apendicectomía -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Apendicectomía</h3>
+        <p class="proc-desc">Extirpación del apéndice. Disponible 24 horas para urgencias.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Apendicectomía?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- HERNIOPLASTIA -->
-      <div class="proc-card fade-in fade-in-delay-2" id="hernioplastia">
-        <div class="proc-card-header">
-          <h3>🔧 Hernioplastia</h3>
-          <span class="proc-price-tag">Q6,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico: 3 dosis de Ceftriaxona</li>
-            <li><span class="ck">✓</span> Analgésico: 6 dosis de Diclofenaco</li>
-            <li><span class="ck">✓</span> 3 soluciones intravenosas</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Hernioplastia -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Hernioplastia</h3>
+        <p class="proc-desc">Reparación quirúrgica de hernias abdominales e inguinales.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Hernioplastia?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- COLECISTECTOMÍA SIN VIDEO -->
-      <div class="proc-card fade-in" id="colecistectomia">
-        <div class="proc-card-header">
-          <h3>🫀 Colecistectomía sin video</h3>
-          <span class="proc-price-tag">Q7,000.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico: 3 dosis de Ceftriaxona</li>
-            <li><span class="ck">✓</span> Analgésico: 6 dosis de Diclofenaco</li>
-            <li><span class="ck">✓</span> 3 soluciones intravenosas</li>
-            <li><span class="ck">✓</span> Drenaje de penrose</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Colecistectomía sin video -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Colecistectomía</h3>
+        <p class="proc-desc">Extirpación de la vesícula biliar — técnica convencional.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Colecistectomía?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- COLECISTECTOMÍA CON VIDEO -->
-      <div class="proc-card fade-in fade-in-delay-1" id="colecistectomia-video">
-        <div class="proc-card-header">
-          <h3>🎥 Colecistectomía con video</h3>
-          <span class="proc-price-tag">Q12,500.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones con equipo laparoscópico</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico, analgésico y soluciones IV</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Colecistectomía laparoscópica -->
+      <div class="proc-card" style="border-top: 2px solid var(--gold);">
+        <div class="proc-icon">✨</div>
+        <h3 class="proc-title">Colecistectomía Laparoscópica</h3>
+        <p class="proc-desc">Vesícula por laparoscopia — mínima invasión, recuperación más rápida.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones con laparoscopio</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Colecistectomía Laparoscópica?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- PRÓSTATA CON VIDEO -->
-      <div class="proc-card fade-in fade-in-delay-2" id="prostata-video">
-        <div class="proc-card-header">
-          <h3>🎥 Próstata con video</h3>
-          <span class="proc-price-tag">Q12,500.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones con equipo de video</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico, analgésico y soluciones IV</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Próstata con video -->
+      <div class="proc-card" style="border-top: 2px solid var(--gold);">
+        <div class="proc-icon">✨</div>
+        <h3 class="proc-title">Próstata con Video</h3>
+        <p class="proc-desc">Cirugía de próstata por videolaparoscopia.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Próstata con Video?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- PRÓSTATA SIN VIDEO -->
-      <div class="proc-card fade-in" id="prostata">
-        <div class="proc-card-header">
-          <h3>⚕️ Próstata sin video</h3>
-          <span class="proc-price-tag">Q9,500.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> Antibiótico, analgésico y soluciones IV</li>
-            <li><span class="ck">✓</span> Materiales de sutura y desechables</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
+      <!-- Próstata abierta -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Próstata Abierta</h3>
+        <p class="proc-desc">Cirugía de próstata por técnica convencional abierta.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Próstata Abierta?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- CESÁREA -->
-      <div class="proc-card fade-in fade-in-delay-1" id="cesarea">
-        <div class="proc-card-header">
-          <h3>👶 Cesárea</h3>
-          <span class="proc-price-tag">Q6,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de operaciones (hora y media)</li>
-            <li><span class="ck">✓</span> 48 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Laboratorios pre-operatorios básicos</li>
-            <li><span class="ck">✓</span> 2 dosis de oxitocina</li>
-            <li><span class="ck">✓</span> Antibiótico, analgésico y soluciones IV</li>
-            <li><span class="ck">✓</span> Gotas de Clorafernicol para el bebé</li>
-            <li><span class="ck">✓</span> Sonda de aspiración</li>
-            <li><span class="ck">✓</span> Pañales para mamá y bebé</li>
-            <li><span class="ck">✓</span> Sonda Foley y materiales de sutura</li>
-          </ul>
-          <div class="proc-note">
-            <strong>Opcional:</strong> Vacuna hepatitis B para el bebé (costo adicional)
-          </div>
+      <!-- Cesárea -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Cesárea</h3>
+        <p class="proc-desc">Parto por cesárea programada o de urgencia, disponible 24 horas.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones y partos</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Atención de mamá y bebé</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Cesárea?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- PARTO -->
-      <div class="proc-card fade-in fade-in-delay-2" id="parto">
-        <div class="proc-card-header">
-          <h3>🤱 Parto</h3>
-          <span class="proc-price-tag">Q3,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de partos (hora y media)</li>
-            <li><span class="ck">✓</span> 24 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> 2 dosis de oxitocina</li>
-            <li><span class="ck">✓</span> Vitamina K para el recién nacido</li>
-            <li><span class="ck">✓</span> Gotas de Cloranfernicol para el bebé</li>
-            <li><span class="ck">✓</span> Pañales para mamá y bebé</li>
-            <li><span class="ck">✓</span> Sonda de aspiración</li>
-          </ul>
-          <div class="proc-note">
-            <strong>Opcional:</strong> Vacuna hepatitis B para el bebé (costo adicional)
-          </div>
+      <!-- Parto -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Parto</h3>
+        <p class="proc-desc">Atención de parto vaginal con personal especializado las 24 horas.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de partos equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Atención de mamá y bebé</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Parto?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- LEGRADO -->
-      <div class="proc-card fade-in" id="legrado">
-        <div class="proc-card-header">
-          <h3>🏥 Legrado</h3>
-          <span class="proc-price-tag">Q3,800.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de procedimientos (hora y media)</li>
-            <li><span class="ck">✓</span> 24 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Pañal para adulto</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
-          <div class="proc-note">
-            <strong>Nota:</strong> Medicamentos tienen costo adicional según prescripción.
-          </div>
+      <!-- Legrado -->
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">Legrado</h3>
+        <p class="proc-desc">Procedimiento ginecológico de limpieza uterina.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala de operaciones equipada</li>
+          <li>Encamamiento y alimentación</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta Legrado?')">💬 Ver precio</button>
         </div>
       </div>
 
       <!-- AMEU -->
-      <div class="proc-card fade-in fade-in-delay-1" id="ameu">
-        <div class="proc-card-header">
-          <h3>⚕️ AMEU</h3>
-          <span class="proc-price-tag">Q3,500.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">Incluido en tu procedimiento</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Sala de procedimientos (hora y media)</li>
-            <li><span class="ck">✓</span> 12 a 18 hrs de encamamiento y alimentación</li>
-            <li><span class="ck">✓</span> Atención médica y de enfermería</li>
-            <li><span class="ck">✓</span> Pañal para adulto</li>
-            <li><span class="ck">✓</span> Servicios de higiene</li>
-          </ul>
-          <div class="proc-note">
-            <strong>Nota:</strong> Medicamentos tienen costo adicional según prescripción.
-          </div>
+      <div class="proc-card">
+        <div class="proc-icon">🔹</div>
+        <h3 class="proc-title">AMEU</h3>
+        <p class="proc-desc">Aspiración Manual Endouterina — procedimiento ginecológico menor.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Sala equipada y esterilizada</li>
+          <li>Recuperación y monitoreo</li>
+          <li>Medicamentos básicos incluidos</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta AMEU?')">💬 Ver precio</button>
         </div>
       </div>
 
-      <!-- KIT DE ASEO -->
-      <div class="proc-card fade-in fade-in-delay-2" id="kit">
-        <div class="proc-card-header">
-          <h3>🧴 Kit de Aseo Personal</h3>
-          <span class="proc-price-tag">Q100.00</span>
-        </div>
-        <div class="proc-card-body">
-          <div class="proc-includes-label">El kit incluye</div>
-          <ul class="proc-list">
-            <li><span class="ck">✓</span> Gel antibacterial</li>
-            <li><span class="ck">✓</span> Paquete de toallas húmedas</li>
-            <li><span class="ck">✓</span> Botella de agua pura</li>
-            <li><span class="ck">✓</span> Kit de cepillo + pasta dental</li>
-            <li><span class="ck">✓</span> Paquete de pañuelos faciales</li>
-            <li><span class="ck">✓</span> Jabón de ducha</li>
-            <li><span class="ck">✓</span> Toalla de algodón</li>
-          </ul>
-          <div class="proc-note" style="background:#E8F5E9; border-color:#4CAF50; color:#1B5E20;">
-            Disponible como complemento opcional durante tu estadía.
-          </div>
+      <!-- Encamamiento adicional -->
+      <div class="proc-card" style="border: 1px solid var(--gold-border); background: var(--gold-pale);">
+        <div class="proc-icon">🛏️</div>
+        <h3 class="proc-title">Encamamiento Adicional</h3>
+        <p class="proc-desc">Por cada día adicional de hospitalización más allá del paquete incluido.</p>
+        <ul class="includes-list" style="margin:0.8rem 0;">
+          <li>Habitación semiprivada</li>
+          <li>Alimentación incluida</li>
+          <li>Atención de enfermería</li>
+        </ul>
+        <div class="proc-price-wrap">
+          <button class="btn btn-primary btn-sm" onclick="askChatbot('¿Cuánto cuesta el encamamiento adicional?')">💬 Ver precio</button>
         </div>
       </div>
 
-    </div><!-- /proc-grid -->
+    </div>
+
+    <!-- CTA Chatbot -->
+    <div class="fade-in" style="text-align:center;margin-top:3rem;padding:2rem;background:var(--navy);border-radius:var(--radius-lg);border:1px solid var(--gold-border);max-width:600px;margin:3rem auto 0;">
+      <div style="font-size:2rem;margin-bottom:0.8rem;">💬</div>
+      <h3 style="color:var(--white);margin-bottom:0.5rem;">¿Tienes dudas sobre algún procedimiento?</h3>
+      <p style="color:rgba(255,255,255,0.5);margin-bottom:1.5rem;font-size:0.9rem;">Nuestro asistente virtual puede darte más información sobre precios, qué incluye cada paquete y cómo programar tu cirugía.</p>
+      <button class="btn btn-primary" onclick="document.getElementById('chatbotTrigger').click()">Preguntar al asistente →</button>
+    </div>
   </div>
 </section>
 
-<!-- PREGUNTAS FRECUENTES -->
+<!-- FAQ -->
 <section class="section">
   <div class="container">
     <div class="section-header">
-      <span class="section-label">Preguntas frecuentes</span>
+      <span class="section-label">Preguntas Frecuentes</span>
       <h2 class="section-title">Lo que debes saber</h2>
     </div>
-    <div style="max-width:800px; margin:0 auto;" class="fade-in">
-      <div class="accordion">
-        <div class="accordion-item">
-          <button class="accordion-btn" aria-expanded="false"><span>¿Qué incluyen todos los procedimientos?</span><span class="accordion-icon">+</span></button>
-          <div class="accordion-body">
-            <ul class="includes-list">
-              <li>Laboratorios pre-operatorios básicos: Hematología, BUN, Creatinina, Glucosa</li>
-              <li>Comida durante la estadía</li>
-              <li>Atención médica especializada</li>
-              <li>Atención de enfermería 24 horas</li>
-              <li>Servicios de higiene</li>
-              <li>Encamamiento en habitación semiprivada</li>
-            </ul>
-          </div>
+    <div class="accordion fade-in">
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false"><span>¿Qué incluyen todos los procedimientos?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body">
+          <ul class="includes-list">
+            <li>Laboratorios pre-operatorios básicos (Hematología, BUN, Creatinina, Glucosa)</li>
+            <li>Comida durante la estadía</li>
+            <li>Atención médica especializada</li>
+            <li>Atención de enfermería 24 horas</li>
+            <li>Medicamentos básicos (antibiótico y analgésico)</li>
+            <li>Materiales de sutura y desechables</li>
+            <li>Servicios de higiene</li>
+            <li>Encamamiento en habitación semiprivada</li>
+          </ul>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" aria-expanded="false"><span>¿Hay costos adicionales?</span><span class="accordion-icon">+</span></button>
-          <div class="accordion-body">
-            <ul class="includes-list">
-              <li>Exámenes adicionales a los pre-operatorios básicos tienen costo extra</li>
-              <li>El precio puede variar según la edad del paciente</li>
-              <li>Las complicaciones tienen costo adicional con previa autorización</li>
-              <li>La habitación privada tiene costo adicional: <strong>Q850.00 por 24 horas</strong></li>
-              <li>Kit de aseo personal: Q100.00 adicional (opcional)</li>
-              <li>Medicamentos fuera de lo indicado en el paquete se cobran por separado</li>
-            </ul>
-          </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false"><span>¿Hay costos adicionales?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body">
+          <ul class="includes-list">
+            <li>Exámenes adicionales a los pre-operatorios básicos tienen costo extra</li>
+            <li>El precio puede variar según la edad del paciente</li>
+            <li>Las complicaciones tienen costo adicional con previa autorización</li>
+            <li>La habitación privada tiene costo adicional: <strong>Q850.00 por 24 horas</strong></li>
+          </ul>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" aria-expanded="false"><span>¿Cómo agendar mi procedimiento?</span><span class="accordion-icon">+</span></button>
-          <div class="accordion-body">
-            <p style="margin-bottom:0.8rem;">Comunícate con nosotros para programar tu procedimiento:</p>
-            <ul class="includes-list">
-              <li>📱 WhatsApp: <strong>3297-4228</strong></li>
-              <li>☎️ Teléfono: <strong>5121-9282</strong></li>
-              <li>✉️ <strong>sanatoriosanangel@gmail.com</strong></li>
-            </ul>
-            <p style="margin-top:0.8rem; color:var(--blue); font-weight:500;">También atendemos procedimientos de urgencia las 24 horas.</p>
-          </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false"><span>¿Cómo puedo programar una cirugía?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body">
+          <p>Puedes comunicarte con nosotros por WhatsApp al <strong>3297-4228</strong>, por teléfono al <strong>5121-9282</strong> o por correo a <strong>sanatoriosanangel@gmail.com</strong>. Nuestro equipo te orientará sobre los pasos a seguir.</p>
         </div>
-        <div class="accordion-item">
-          <button class="accordion-btn" aria-expanded="false"><span>¿Qué tipo de habitaciones hay disponibles?</span><span class="accordion-icon">+</span></button>
-          <div class="accordion-body">
-            <ul class="includes-list">
-              <li><strong>Semiprivada (incluida):</strong> espacio amplio, cama hospitalaria, TV, sillones</li>
-              <li><strong>Privada (Q850 adicional/24h):</strong> baño privado, ducha, espacio amplio, área abierta, cama hospitalaria, TV</li>
-            </ul>
-          </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-btn" aria-expanded="false"><span>¿Realizan cirugías de emergencia?</span><span class="accordion-icon">+</span></button>
+        <div class="accordion-body">
+          <p>Sí. Nuestro quirófano está disponible las <strong>24 horas, los 7 días de la semana</strong> para emergencias quirúrgicas. Llama al <strong>5121-9282</strong> en caso de urgencia.</p>
         </div>
       </div>
     </div>
@@ -468,26 +321,81 @@
 </section>
 
 <!-- CTA -->
-<section style="background:var(--navy); padding:4rem 0;">
+<section style="background:var(--navy);padding:4rem 0;">
   <div class="container" style="text-align:center;">
-    <h2 style="color:white; margin-bottom:0.8rem;" class="fade-in">¿Listo para programar tu procedimiento?</h2>
-    <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem;" class="fade-in">Contáctanos ahora — atendemos las 24 horas.</p>
-    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-in">
-      <a href="tel:51219282" class="btn btn-red btn-lg">☎️ 5121-9282</a>
-      <a href="https://wa.me/50232974228" class="btn btn-outline btn-lg">💬 WhatsApp 3297-4228</a>
+    <h2 style="color:white;margin-bottom:0.8rem;" class="fade-in">¿Necesitas programar una cirugía?</h2>
+    <p style="color:rgba(255,255,255,0.5);margin-bottom:2rem;" class="fade-in">Disponibles las 24 horas para cirugías programadas y de urgencia.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="fade-in">
+      <a href="tel:32974228" class="btn btn-red btn-lg">🚨 5121-9282</a>
+      <a href="https://wa.me/50232974228" class="btn btn-primary btn-lg">💬 WhatsApp 3297-4228</a>
     </div>
   </div>
 </section>
 
 <div id="footer-root"></div>
 <div id="chatbot-root"></div>
-
 <script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
-  document.getElementById('header-root').innerHTML = renderHeader('procedimientos');
-  document.getElementById('footer-root').innerHTML = renderFooter(true);
-  document.getElementById('chatbot-root').innerHTML = renderChatbot();
+document.getElementById('header-root').innerHTML = renderHeader('procedimientos');
+document.getElementById('footer-root').innerHTML = renderFooter(true);
+document.getElementById('chatbot-root').innerHTML = renderChatbot();
+
+function askChatbot(message) {
+  // Force open chatbot directly without toggle
+  const win = document.getElementById('chatbotWindow');
+  const input = document.getElementById('chatInput');
+  const badge = document.querySelector('.chatbot-badge');
+  if (!win) return;
+  win.classList.add('open');
+  if (badge) badge.style.display = 'none';
+  // Scroll chatbot into view on mobile
+  setTimeout(() => {
+    win.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    if (input) {
+      input.value = message;
+      input.focus();
+      const sendBtn = document.getElementById('chatSend');
+      if (sendBtn) sendBtn.click();
+    }
+  }, 250);
+}
+
+function showPrice(btn) {
+  const wrap = btn.parentElement;
+  const priceEl = wrap.querySelector('.proc-price');
+  priceEl.classList.remove('hidden');
+  btn.style.display = 'none';
+}
 </script>
+
+<style>
+.proc-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.proc-card::after {
+  content:''; position:absolute; bottom:0; left:0; right:0;
+  height:2px; background:linear-gradient(90deg,var(--gold),var(--gold-light));
+  transform:scaleX(0); transition:transform 0.35s; transform-origin:left;
+}
+.proc-card:hover { box-shadow:var(--shadow-md); transform:translateY(-3px); }
+.proc-card:hover::after { transform:scaleX(1); }
+.proc-icon { font-size:1.2rem; margin-bottom:0.6rem; }
+.proc-title { font-size:1.1rem; margin-bottom:0.4rem; font-family:'Cormorant Garamond',serif; color:var(--navy); }
+.proc-desc { font-size:0.85rem; color:var(--gray-500); margin-bottom:0.5rem; }
+.proc-price-wrap { margin-top:1rem; display:flex; align-items:center; gap:1rem; }
+.proc-price {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem; font-weight:700; color:var(--gold);
+  transition: all 0.4s ease;
+}
+.proc-price.hidden { display:none; }
+</style>
 </body>
 </html>

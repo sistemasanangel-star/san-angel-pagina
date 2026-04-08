@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Médicos Referentes – Hospital San Ángel</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    /* ── LOCK SCREEN ── */
+    .lock-screen {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+      position: relative;
+    }
+    /* LEFT: hospital photo with overlay */
+    .lock-left {
+      position: relative;
+      overflow: hidden;
+    }
+    .lock-left-bg {
+      position: absolute; inset: 0;
+      background-image: url('../assets/fotos/portada.jpg');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.55);
+    }
+    .lock-left-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(11,21,38,0.7) 0%, rgba(11,21,38,0.3) 100%);
+    }
+    .lock-left-content {
+      position: relative; z-index: 1;
+      padding: 4rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .lock-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 100px; padding: 6px 16px;
+      margin-bottom: 2rem;
+    }
+    .lock-badge span { color: var(--gold); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; }
+    .lock-left-content h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 700; color: white;
+      line-height: 1.1; margin-bottom: 1.2rem;
+    }
+    .lock-left-content h1 em { color: var(--gold); font-style: italic; }
+    .lock-left-content p { color: rgba(255,255,255,0.65); font-size: 1rem; line-height: 1.75; margin-bottom: 2.5rem; max-width: 400px; }
+    .lock-benefits { display: flex; flex-direction: column; gap: 1.2rem; margin-bottom: 3rem; }
+    .lock-benefit {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 10px;
+      backdrop-filter: blur(8px);
+    }
+    .lock-benefit-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: rgba(201,168,76,0.15);
+      border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .lock-benefit h4 { color: white; font-size: 0.88rem; font-weight: 600; margin-bottom: 2px; }
+    .lock-benefit p  { color: rgba(255,255,255,0.45); font-size: 0.78rem; margin: 0; }
+    .lock-contact-row { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+    /* RIGHT: login form on CREAM background */
+    .lock-right {
+      background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      padding: 4rem 3rem;
+    }
+    .lock-card {
+      width: 100%; max-width: 400px;
+    }
+    .lock-card-logo {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 2.5rem;
+    }
+    .lock-card-logo img { height: 48px; width: auto; }
+    .lock-card h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.4rem;
+    }
+    .lock-card .lock-sub { color: var(--gray-500); font-size: 0.9rem; margin-bottom: 2rem; line-height: 1.6; }
+    .lock-label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--gray-700); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+    .lock-input {
+      width: 100%; padding: 0.85rem 1.2rem;
+      background: white;
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius);
+      color: var(--navy); font-size: 1rem;
+      letter-spacing: 0.15em; outline: none;
+      font-family: 'Inter', sans-serif;
+      transition: border-color 0.2s;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .lock-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+    .lock-input.error { border-color: var(--red); animation: shake 0.3s ease; }
+    .lock-error { color: var(--red); font-size: 0.82rem; margin-bottom: 1rem; display: none; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+    .lock-hint {
+      margin-top: 1.5rem;
+      padding: 1rem 1.2rem;
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+    }
+    .lock-hint p { font-size: 0.8rem; color: var(--gray-500); margin: 0; line-height: 1.6; }
+    .lock-divider { border: none; border-top: 1px solid var(--gray-200); margin: 2rem 0; }
+    .lock-join h4 { color: var(--navy); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.3rem; }
+    .lock-join p  { color: var(--gray-500); font-size: 0.82rem; margin-bottom: 1rem; }
+
+    /* INTERIOR - cream background */
+    .ref-content { display: none; background: var(--cream); }
+    .ref-content.unlocked { display: block; }
+
+    /* Override navy sections inside ref to be lighter */
+    .ref-content .page-hero { background: var(--navy); }
+    .ref-content .section { background: var(--cream); }
+    .ref-content .section-alt { background: var(--gray-100); }
+
+    /* Paquete cards */
+    .paquete-card {
+      background: white;
+      border: 1px solid var(--gray-200);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .paquete-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .paquete-header {
+      background: var(--navy);
+      padding: 1.4rem 1.6rem;
+      display: flex; justify-content: space-between; align-items: flex-start;
+      border-bottom: 2px solid var(--gold);
+    }
+    .paquete-nombre { color: white; font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:700; }
+    .paquete-prices { text-align: right; }
+    .precio-paciente { color: var(--gold); font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; }
+    .precio-comision {
+      background: rgba(201,168,76,0.15); border: 1px solid var(--gold-border);
+      color: var(--gold-light); border-radius: 100px;
+      padding: 2px 10px; font-size: 0.75rem; font-weight:600;
+      margin-top: 4px; display: inline-block;
+    }
+    .paquete-body { padding: 1.4rem 1.6rem; background: white; }
+    .paquete-includes { list-style:none; display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1rem; }
+    .paquete-includes li { display:flex; align-items:flex-start; gap:8px; font-size:0.85rem; color:var(--gray-700); }
+    .paquete-includes li::before { content:'✓'; color:var(--gold); font-weight:700; flex-shrink:0; margin-top:1px; }
+    .paquete-nota { background:var(--cream); border-left:3px solid var(--gold); padding:0.7rem 1rem; border-radius:0 6px 6px 0; font-size:0.78rem; color:var(--gray-500); line-height:1.6; }
+
+    /* Summary table */
+    .summary-table { width:100%; border-collapse:collapse; font-size:0.9rem; background:white; border-radius:var(--radius); overflow:hidden; }
+    .summary-table th { background:var(--navy); color:var(--gold); padding:0.9rem 1.2rem; text-align:left; font-size:0.72rem; letter-spacing:0.1em; text-transform:uppercase; }
+    .summary-table td { padding:0.9rem 1.2rem; border-bottom:1px solid var(--gray-200); color:var(--gray-700); }
+    .summary-table tr:last-child td { border-bottom:none; }
+    .summary-table tr:hover td { background:var(--cream); }
+    .price-g { font-family:'Cormorant Garamond',serif; font-size:1.1rem; font-weight:700; color:var(--gold); }
+    .com-badge { background:rgba(201,168,76,0.1); border:1px solid var(--gold-border); color:var(--gold); border-radius:100px; padding:3px 10px; font-size:0.78rem; font-weight:600; }
+
+    @media (max-width: 768px) {
+      .lock-screen { grid-template-columns: 1fr; }
+      .lock-left { display: none; }
+      .lock-right { padding: 2rem 1.5rem; background: var(--navy); }
+      .lock-card h2 { color: white; }
+      .lock-card .lock-sub { color: rgba(255,255,255,0.5); }
+      .lock-label { color: rgba(255,255,255,0.7); }
+      .lock-input { background: rgba(255,255,255,0.08); color: white; border-color: var(--gold-border); }
+      .lock-hint { background: rgba(255,255,255,0.05); border-color: var(--gold-border); }
+      .lock-hint p { color: rgba(255,255,255,0.4); }
+      .lock-divider { border-color: rgba(255,255,255,0.1); }
+      .lock-join h4 { color: white; }
+      .lock-join p { color: rgba(255,255,255,0.4); }
+    }
+  </style>
+</head>
+<body style="background:var(--navy);">
+<div id="header-root"></div>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen" class="lock-screen">
+
+  <!-- LEFT: hospital photo -->
+  <div class="lock-left">
+    <div class="lock-left-bg"></div>
+    <div class="lock-left-overlay"></div>
+    <div class="lock-left-content">
+      <div class="lock-badge">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:block;"></span>
+        <span>Red de Médicos Referentes</span>
+      </div>
+      <h1>Programa de<br><em>Médicos Referentes</em></h1>
+      <p>Únete a nuestra red exclusiva y ofrece a tus pacientes acceso a servicios médicos de calidad con beneficios especiales para ti.</p>
+      <div class="lock-benefits">
+        <div class="lock-benefit">
+          <div class="lock-benefit-icon">💰</div>
+          <div>
+            <h4>Comisiones atractivas</h4>
+            <p>Por cada paciente referido recibes una comisión directa por procedimiento</p>
+          </div>
+        </div>
+        <div class="lock-benefit">
+          <div class="lock-benefit-icon">🏥</div>
+          <div>
+            <h4>Infraestructura completa</h4>
+            <p>Quirófanos, UCI adultos, pediátrico y neonatal disponibles 24h</p>
+          </div>
+        </div>
+        <div class="lock-benefit">
+          <div class="lock-benefit-icon">📋</div>
+          <div>
+            <h4>Paquetes detallados</h4>
+            <p>Precios especiales y contenido exacto de cada procedimiento</p>
+          </div>
+        </div>
+      </div>
+      <div class="lock-contact-row">
+        <a href="https://wa.me/50251219282?text=Hola,%20me%20interesa%20unirme%20a%20la%20red%20de%20médicos%20referentes."
+           class="btn btn-outline btn-sm" target="_blank">💬 WhatsApp visitadora</a>
+        <a href="tel:51219282" class="btn btn-primary btn-sm">📞 5121-9282</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: login form -->
+  <div class="lock-right">
+    <div class="lock-card">
+      <div class="lock-card-logo">
+        <img src="../assets/img/logo-dark.png" alt="Hospital San Ángel" style="height:44px;">
+      </div>
+      <h2>Acceso Exclusivo</h2>
+      <p class="lock-sub">Esta sección está reservada para médicos referentes con código de acceso.</p>
+      <label class="lock-label" for="codeInput">Código de acceso</label>
+      <input type="password" class="lock-input" id="codeInput"
+             placeholder="Ingresa tu código" maxlength="20"
+             onkeydown="if(event.key==='Enter') checkCode()">
+      <p class="lock-error" id="lockError">Código incorrecto. Intenta de nuevo.</p>
+      <button class="btn btn-primary" style="width:100%;" onclick="checkCode()">Ingresar al área exclusiva →</button>
+      <div class="lock-hint" style="margin-top:1rem;">
+        <p>🔑 El código es entregado por nuestra <strong>visitadora médica</strong> al incorporarte a la red.</p>
+      </div>
+      <hr class="lock-divider">
+      <div class="lock-join">
+        <h4>¿Aún no tienes código?</h4>
+        <p>Agenda una cita con nuestra visitadora médica para conocer todos los beneficios.</p>
+        <div style="display:flex;gap:0.7rem;flex-wrap:wrap;">
+          <a href="https://wa.me/50251219282?text=Hola,%20me%20interesa%20unirme%20a%20la%20red%20de%20médicos%20referentes%20del%20Hospital%20San%20Ángel."
+             class="btn btn-dark btn-sm" target="_blank">💬 WhatsApp</a>
+          <a href="tel:51219282" class="btn btn-outline btn-sm" style="border-color:var(--gold-border);color:var(--gold);">📞 5121-9282</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONTENIDO PROTEGIDO -->
+<div id="refContent" class="ref-content">
+
+  <section class="page-hero">
+    <div class="container" style="position:relative;z-index:1;">
+      <div class="breadcrumb fade-in"><a href="../index.html">Inicio</a><span>›</span><span>Médicos Referentes</span></div>
+      <span class="section-label fade-in">Exclusivo para Médicos Referentes</span>
+      <h1 class="fade-in fade-in-delay-1">Procedimientos Referentes</h1>
+      <p class="fade-in fade-in-delay-2">Información completa de paquetes, precios para pacientes y comisiones para nuestra red de médicos referentes.</p>
+      <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.5rem;" class="fade-in fade-in-delay-3">
+        <a href="tel:32974228" class="btn btn-red btn-sm">🚨 Emergencias: 3297-4228</a>
+        <a href="tel:39944181" class="btn btn-dark btn-sm">📞 3994-4181</a>
+        <button onclick="logout()" class="btn btn-outline btn-sm">🔒 Cerrar sesión</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUMEN TABLA -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Resumen</span>
+        <h2 class="section-title">Precios y Comisiones</h2>
+        <p class="section-desc">Precio para el paciente y comisión para el médico referente por cada procedimiento.</p>
+      </div>
+      <div style="overflow-x:auto;border-radius:var(--radius);border:1px solid var(--gray-200);box-shadow:var(--shadow-sm);" class="fade-in">
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>Procedimiento</th>
+              <th>Precio Paciente</th>
+              <th>Comisión Referente</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Histerectomía</strong></td><td><span class="price-g">Q6,800.00</span></td><td><span class="com-badge">Q600.00</span></td></tr>
+            <tr><td><strong>Apendicectomía</strong></td><td><span class="price-g">Q6,800.00</span></td><td><span class="com-badge">Q550.00</span></td></tr>
+            <tr><td><strong>Hernioplastia</strong></td><td><span class="price-g">Q6,800.00</span></td><td><span class="com-badge">Q650.00</span></td></tr>
+            <tr><td><strong>Colecistectomía sin video</strong></td><td><span class="price-g">Q7,000.00</span></td><td><span class="com-badge">Q700.00</span></td></tr>
+            <tr style="background:rgba(201,168,76,0.03);"><td><strong>Colecistectomía con video</strong></td><td><span class="price-g">Q12,500.00</span></td><td><span class="com-badge">Q800.00</span></td></tr>
+            <tr style="background:rgba(201,168,76,0.03);"><td><strong>Próstata con video</strong></td><td><span class="price-g">Q12,500.00</span></td><td><span class="com-badge">Q800.00</span></td></tr>
+            <tr><td><strong>Próstata sin video</strong></td><td><span class="price-g">Q9,500.00</span></td><td><span class="com-badge">Q700.00</span></td></tr>
+            <tr><td><strong>Cesáreas</strong></td><td><span class="price-g">Q6,800.00</span></td><td><span class="com-badge">Q650.00</span></td></tr>
+            <tr><td><strong>Partos</strong></td><td><span class="price-g">Q3,800.00</span></td><td><span class="com-badge">Q480.00</span></td></tr>
+            <tr><td><strong>Legrado</strong></td><td><span class="price-g">Q3,800.00</span></td><td><span class="com-badge">Q450.00</span></td></tr>
+            <tr><td><strong>AMEU</strong></td><td><span class="price-g">Q3,500.00</span></td><td><span class="com-badge">Q350.00</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="notice-box fade-in" style="margin-top:1.5rem;">
+        <p>ℹ️ <strong>Información importante:</strong> Exámenes adicionales a los pre-operatorios básicos tienen costo adicional. El precio varía según la edad del paciente. Las complicaciones tienen un costo adicional con previa autorización del paciente. La habitación privada tiene costo adicional.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAQUETES DETALLADOS - EXACTO DEL PDF -->
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label">Detalle Completo</span>
+        <h2 class="section-title">Paquetes por Procedimiento</h2>
+        <p class="section-desc">Contenido exacto de cada paquete — todo lo que incluye el precio para el paciente.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;" class="fade-in">
+
+        <!-- HISTERECTOMÍA -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Histerectomía</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,825.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q6,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>Utilización de electrocauterio</li>
+              <li>48 hrs de encamamiento y alimentación</li>
+              <li>Uso de oxígeno en sala de operaciones</li>
+              <li>3 dosis de antibiótico (Ceftriaxona)</li>
+              <li>6 dosis de analgésico (Diclofenaco)</li>
+              <li>3 Soluciones intravenosas</li>
+              <li>Sonda Foley + Bolsa recolectora para orina</li>
+              <li>4 hilos de sutura</li>
+              <li>4 jeringas desechables</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- APENDICECTOMÍA -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Apendicectomía</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,750.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q6,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>Utilización de electrocauterio</li>
+              <li>48 hrs de encamamiento y alimentación</li>
+              <li>Uso de oxígeno en sala de operaciones</li>
+              <li>3 dosis de antibiótico (Ceftriaxona)</li>
+              <li>6 dosis de analgésico (Diclofenaco)</li>
+              <li>3 Soluciones intravenosas</li>
+              <li>4 hilos de sutura</li>
+              <li>4 jeringas desechables</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- HERNIOPLASTIA -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Hernioplastia</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,875.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q6,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>Utilización de electrocauterio</li>
+              <li>48 hrs de encamamiento y alimentación</li>
+              <li>Uso de oxígeno en sala de operaciones</li>
+              <li>3 dosis de antibiótico (Ceftriaxona)</li>
+              <li>6 dosis de analgésico (Diclofenaco)</li>
+              <li>3 Soluciones intravenosas</li>
+              <li>4 hilos de sutura</li>
+              <li>4 jeringas desechables</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- COLECISTECTOMÍA -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Colecistectomía</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,785.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Sin video: Q7,000 · Con video: Q12,500</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>Utilización de electrocauterio</li>
+              <li>48 hrs de encamamiento y alimentación</li>
+              <li>Uso de oxígeno en sala de operaciones</li>
+              <li>3 dosis de antibiótico (Ceftriaxona)</li>
+              <li>6 dosis de analgésico (Diclofenaco)</li>
+              <li>3 Soluciones intravenosas</li>
+              <li>Drenaje de penrose</li>
+              <li>4 hilos de sutura</li>
+              <li>4 jeringas desechables</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- CESÁREA -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Cesárea</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,900.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q6,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>Utilización de electrocauterio</li>
+              <li>48 hrs de encamamiento y alimentación</li>
+              <li>Uso de oxígeno en sala de operaciones</li>
+              <li>2 dosis de oxitocina</li>
+              <li>3 dosis de antibiótico (Ceftriaxona)</li>
+              <li>6 dosis de analgésico (Diclofenaco)</li>
+              <li>Gotas de Cloranfernicol</li>
+              <li>3 Soluciones intravenosas</li>
+              <li>Sonda de aspiración</li>
+              <li>Pañales para adulto y pediátricos</li>
+              <li>Sonda Foley + Bolsa recolectora de orina</li>
+              <li>4 hilos de sutura</li>
+              <li>4 jeringas desechables</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100. Vacuna hepatitis B opcional con costo adicional.</div>
+          </div>
+        </div>
+
+        <!-- PARTOS -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Partos</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q900.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q3,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Utilización sala de operaciones (Hora y media)</li>
+              <li>Canalización</li>
+              <li>24 hrs de encamamiento y alimentación</li>
+              <li>2 dosis de oxitocina</li>
+              <li>Vitamina K</li>
+              <li>Gotas de Cloranfernicol</li>
+              <li>Pañales para adulto y pediátricos</li>
+              <li>Sonda de aspiración</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100. Vacuna hepatitis B opcional.</div>
+          </div>
+        </div>
+
+        <!-- LEGRADO -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Legrado</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q1,000.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q3,800</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Canalización</li>
+              <li>Utilización sala (Hora y media)</li>
+              <li>24 hrs de encamamiento y alimentación</li>
+              <li>Pañal para adulto</li>
+              <li>Medicamentos a utilizar tienen costo adicional</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- AMEU -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">AMEU</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Paquete tratante</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q750.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">precio tratante</div>
+              <div style="color:var(--gold-light);font-size:0.8rem;margin-top:2px;">Paciente: Q3,500</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Canalización</li>
+              <li>Utilización sala (Hora y media)</li>
+              <li>12 a 18 hrs de encamamiento y alimentación</li>
+              <li>Pañal para adulto</li>
+              <li>Medicamentos a utilizar tienen costo adicional</li>
+            </ul>
+            <div class="paquete-nota">Cualquier insumo adicional se cobra por separado. Habitación privada: Q850 las 24h. Kit de aseo personal: Q100 adicional.</div>
+          </div>
+        </div>
+
+        <!-- KIT DE ASEO -->
+        <div class="paquete-card">
+          <div class="paquete-header">
+            <div>
+              <div class="paquete-nombre">Kit de Aseo Personal</div>
+              <div style="color:rgba(255,255,255,0.4);font-size:0.78rem;margin-top:3px;">Adicional opcional</div>
+            </div>
+            <div class="paquete-prices">
+              <div class="precio-paciente">Q100.00</div>
+              <div style="color:rgba(255,255,255,0.3);font-size:0.7rem;">costo adicional</div>
+            </div>
+          </div>
+          <div class="paquete-body">
+            <ul class="paquete-includes">
+              <li>Gel antibacterial</li>
+              <li>Paquete de toallas húmedas</li>
+              <li>Botella de agua pura</li>
+              <li>Kit de cepillo + pasta dental</li>
+              <li>Paquete de pañuelos faciales</li>
+              <li>Jabón de ducha</li>
+              <li>Toalla de algodón</li>
+            </ul>
+            <div class="paquete-nota">Este kit es opcional y tiene costo adicional de Q100.00 por paciente. No está incluido en ningún paquete.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INFORMACIÓN GENERAL INCLUIDO EN TODOS -->
+  <section class="section" style="background:var(--navy);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-label" style="color:var(--gold);">Base de todos los paquetes</span>
+        <h2 class="section-title" style="color:var(--white);">Incluido en todos los procedimientos</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:800px;margin:0 auto;" class="fade-in">
+        <div style="background:rgba(255,255,255,0.04);border:1px solid var(--gold-border);border-radius:var(--radius);padding:1.6rem;">
+          <h4 style="color:var(--gold);margin-bottom:1rem;">✅ Siempre incluido</h4>
+          <ul class="paquete-includes">
+            <li>Laboratorios pre-operatorios básicos (Hematología, BUN, Creatinina, Glucosa)</li>
+            <li>Comida durante la estadía</li>
+            <li>Atención médica especializada</li>
+            <li>Atención de enfermería 24h</li>
+            <li>Servicios de higiene</li>
+            <li>Encamamiento semiprivado</li>
+          </ul>
+        </div>
+        <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(192,57,43,0.3);border-radius:var(--radius);padding:1.6rem;">
+          <h4 style="color:var(--red-soft);margin-bottom:1rem;">⚠️ Costo adicional</h4>
+          <ul class="paquete-includes" style="">
+            <li style="color:rgba(255,255,255,0.5);">Exámenes adicionales a pre-operatorios básicos</li>
+            <li style="color:rgba(255,255,255,0.5);">Complicaciones (con previa autorización)</li>
+            <li style="color:rgba(255,255,255,0.5);">Habitación privada: <strong style="color:var(--gold);">Q850.00 las 24h</strong></li>
+            <li style="color:rgba(255,255,255,0.5);">Kit de aseo personal: <strong style="color:var(--gold);">Q100.00</strong></li>
+            <li style="color:rgba(255,255,255,0.5);">Precio varía según edad del paciente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section style="background:var(--navy-mid);padding:3rem 0;border-top:1px solid var(--gold-border);">
+    <div class="container" style="text-align:center;">
+      <h3 style="color:var(--white);margin-bottom:0.5rem;">Contacto directo</h3>
+      <p style="color:rgba(255,255,255,0.4);margin-bottom:1.5rem;font-size:0.9rem;">Visitadora médica y coordinación de procedimientos</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:32974228" class="btn btn-red">🚨 Emergencias: 3297-4228</a>
+        <a href="tel:39944181" class="btn btn-dark">📞 3994-4181</a>
+        <a href="tel:51219282" class="btn btn-primary">👩‍⚕️ Visitadora: 5121-9282</a>
+        <a href="https://wa.me/50251219282" class="btn btn-outline" target="_blank">💬 WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div id="footer-root"></div>
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+document.getElementById('header-root').innerHTML = renderHeader('referentes');
+document.getElementById('footer-root').innerHTML = renderFooter(true);
+
+const ACCESS_CODE = 'SANANGEL2026';
+if (sessionStorage.getItem('refUnlocked') === '1') unlock();
+
+function checkCode() {
+  const input = document.getElementById('codeInput');
+  const error = document.getElementById('lockError');
+  if (input.value.trim().toUpperCase() === ACCESS_CODE) {
+    sessionStorage.setItem('refUnlocked', '1');
+    unlock();
+  } else {
+    input.classList.add('error');
+    error.style.display = 'block';
+    setTimeout(() => input.classList.remove('error'), 400);
+    input.value = ''; input.focus();
+  }
+}
+function unlock() {
+  document.getElementById('lockScreen').style.display = 'none';
+  document.getElementById('refContent').classList.add('unlocked');
+  initScrollAnimations();
+}
+function logout() {
+  sessionStorage.removeItem('refUnlocked');
+  location.reload();
+}
+</script>
+</body>
+</html>

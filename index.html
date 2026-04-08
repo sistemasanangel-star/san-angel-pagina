@@ -14,27 +14,33 @@
 
 <!-- ═══ HERO ═══ -->
 <section class="hero" id="home">
-  <!-- Foto real del hospital como fondo -->
+  <!-- Portada del hospital como fondo -->
   <div style="position:absolute;inset:0;z-index:0;overflow:hidden;">
-    <img src="assets/fotos/recepcion2.jpg" alt="" 
-         style="width:100%;height:100%;object-fit:cover;opacity:0.18;filter:blur(1px) saturate(0.6);">
+    <img src="assets/fotos/portada.jpg" alt="Hospital San Ángel"
+         style="width:100%;height:100%;object-fit:cover;object-position:center 30%;opacity:0.55;filter:saturate(0.85);">
   </div>
-  <div class="hero-bg" style="z-index:1;"></div>
-  <div class="hero-grid" style="z-index:1;"></div>
-  <div class="hero-inner" style="position:relative;z-index:2;">
+  <!-- Overlay: más transparente a la derecha para ver la foto -->
+  <div style="position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(11,21,38,0.88) 35%,rgba(11,21,38,0.45) 70%,rgba(11,21,38,0.3) 100%);"></div>
+  <div class="hero-grid" style="z-index:2;opacity:0.4;"></div>
+  <div class="hero-inner" style="position:relative;z-index:3;">
     <div class="hero-content">
-      <div class="hero-badge fade-in">
+      <!-- Logo destacado en el hero -->
+      <div class="fade-in" style="margin-bottom:1.8rem;">
+        <img src="assets/img/logo-transparent.png" alt="Hospital San Ángel"
+             style="height:80px;width:auto;filter:drop-shadow(0 4px 20px rgba(201,168,76,0.4));">
+      </div>
+      <div class="hero-badge fade-in fade-in-delay-1">
         <span class="dot"></span>
         — Chimaltenango, Guatemala
       </div>
-      <h1 class="hero-title fade-in fade-in-delay-1">
+      <h1 class="hero-title fade-in fade-in-delay-2">
         Tu salud,<br>nuestra <em>misión</em>
       </h1>
-      <p class="hero-desc fade-in fade-in-delay-2">
+      <p class="hero-desc fade-in fade-in-delay-3">
         Atención médica integral con excelencia, precisión y profundo respeto por la vida. Disponibles las 24 horas, los 365 días del año.
       </p>
-      <div class="hero-actions fade-in fade-in-delay-3">
-        <a href="tel:51219282" class="btn btn-primary btn-lg">Agendar cita</a>
+      <div class="hero-actions fade-in fade-in-delay-4">
+        <a href="tel:32974228" class="btn btn-primary btn-lg">Agendar cita</a>
         <a href="pages/contacto.html" class="btn btn-outline btn-lg">Cómo llegar</a>
       </div>
       <div class="hero-stats fade-in fade-in-delay-4">
@@ -282,6 +288,110 @@
   </div>
 </section>
 
+<!-- Lightbox functions must be global before any onclick -->
+<script>
+  function openLightbox(src, event) {
+    if (event) { event.stopPropagation(); event.preventDefault(); }
+    var lb = document.getElementById('teamLightbox');
+    var img = document.getElementById('lightboxImg');
+    if (!lb || !img) return;
+    img.src = src;
+    lb.style.display = 'flex';
+    lb.style.alignItems = 'center';
+    lb.style.justifyContent = 'center';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    var lb = document.getElementById('teamLightbox');
+    if (lb) lb.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+
+<!-- ═══ NUESTRO EQUIPO ═══ -->
+<section class="section" id="equipo">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label fade-in">Nuestro Equipo</span>
+      <h2 class="section-title fade-in fade-in-delay-1">Personal Altamente Capacitado</h2>
+      <p class="section-desc fade-in fade-in-delay-2">Contamos con un equipo médico y de enfermería especializado, comprometido con brindar la mejor atención a cada paciente.</p>
+    </div>
+    <!-- LIGHTBOX MODAL -->
+    <div id="teamLightbox" onclick="closeLightbox()" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.92);align-items:center;justify-content:center;cursor:zoom-out;padding:1rem;">
+      <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()" style="max-width:95vw;max-height:92vh;object-fit:contain;border-radius:8px;box-shadow:0 24px 80px rgba(0,0,0,0.8);">
+      <button onclick="closeLightbox()" style="position:fixed;top:1.2rem;right:1.5rem;background:rgba(201,168,76,0.2);border:1px solid rgba(201,168,76,0.4);color:var(--gold);width:40px;height:40px;border-radius:50%;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;">✕</button>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,340px));gap:1.5rem;justify-content:center;max-width:1080px;margin:0 auto;" class="fade-in">
+
+      <!-- Equipo completo -->
+      <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--gray-200);cursor:zoom-in;" onclick="openLightbox('assets/fotos/personal-completo.jpg', event)">
+        <div style="height:260px;overflow:hidden;position:relative;">
+          <img src="assets/fotos/personal-completo.jpg" alt="Equipo completo"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s;"
+               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:white;border-radius:6px;padding:3px 8px;font-size:0.7rem;">🔍 Ver completa</div>
+        </div>
+        <div style="padding:1.4rem;background:white;">
+          <h4 style="color:var(--navy);margin-bottom:0.4rem;">Equipo Completo San Ángel</h4>
+          <p style="font-size:0.85rem;color:var(--gray-500);">Médicos, enfermeras, técnicos y personal administrativo — todos comprometidos con tu salud.</p>
+        </div>
+      </div>
+
+      <!-- Jefes de enfermería - nueva foto panorámica con lightbox -->
+      <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--gray-200);cursor:zoom-in;" onclick="openLightbox('assets/fotos/jefes-enfermeria.jpg', event)">
+        <div style="height:260px;overflow:hidden;position:relative;">
+          <img src="assets/fotos/jefes-enfermeria.jpg" alt="Jefes de Enfermería"
+               style="width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform 0.5s;"
+               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:white;border-radius:6px;padding:3px 8px;font-size:0.7rem;">🔍 Ver completa</div>
+        </div>
+        <div style="padding:1.4rem;background:white;">
+          <h4 style="color:var(--navy);margin-bottom:0.4rem;">Jefes de Enfermería Intensiva</h4>
+          <p style="font-size:0.85rem;color:var(--gray-500);">Personal especializado en cuidados intensivos — adultos, pediátrico y neonatal.</p>
+        </div>
+      </div>
+
+      <!-- Personal enfermería -->
+      <div style="border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--gray-200);cursor:zoom-in;" onclick="openLightbox('assets/fotos/personal-enfermeria.jpg', event)">
+        <div style="height:260px;overflow:hidden;position:relative;">
+          <img src="assets/fotos/personal-enfermeria.jpg" alt="Personal de enfermería"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.5s;"
+               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+          <div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.55);color:white;border-radius:6px;padding:3px 8px;font-size:0.7rem;">🔍 Ver completa</div>
+        </div>
+        <div style="padding:1.4rem;background:white;">
+          <h4 style="color:var(--navy);margin-bottom:0.4rem;">Personal de Enfermería</h4>
+          <p style="font-size:0.85rem;color:var(--gray-500);">Enfermeras y auxiliares capacitadas para brindar atención humanizada y profesional las 24 horas.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Destacado intensivos -->
+    <div style="margin-top:2.5rem;padding:2rem;background:var(--navy);border-radius:var(--radius-lg);border:1px solid var(--gold-border);display:grid;grid-template-columns:1fr 1fr 1fr;gap:2rem;" class="fade-in">
+      <div style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">🧑‍⚕️</div>
+        <h4 style="color:var(--gold);margin-bottom:0.3rem;">Intensivo Adultos</h4>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Personal especializado en UCI adultos con monitoreo constante</p>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">👧</div>
+        <h4 style="color:var(--gold);margin-bottom:0.3rem;">Intensivo Pediátrico</h4>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Enfermeras pediátricas con entrenamiento especializado en niños</p>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem;margin-bottom:0.5rem;">👶</div>
+        <h4 style="color:var(--gold);margin-bottom:0.3rem;">Intensivo Neonatal</h4>
+        <p style="font-size:0.82rem;color:rgba(255,255,255,0.5);">Personal capacitado en manejo de incubadoras y cuidados neonatales</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ═══ TESTIMONIOS ═══ -->
 <section class="testimonios-section" id="testimonios">
   <div class="container">
@@ -343,7 +453,7 @@
       <h2 style="color:white; margin-bottom:0.8rem;">¿Tienes una emergencia?</h2>
       <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem; font-size:1.1rem;">No esperes. Llama ahora — atendemos las 24 horas, los 7 días de la semana.</p>
       <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="tel:51219282" class="btn btn-red btn-lg">☎️ 5121-9282</a>
+        <a href="tel:32974228" class="btn btn-red btn-lg">☎️ 5121-9282</a>
         <a href="https://wa.me/50232974228" target="_blank" class="btn btn-outline btn-lg">💬 WhatsApp 3297-4228</a>
       </div>
     </div>
@@ -369,7 +479,7 @@
         </div>
         <div class="contact-item">
           <div class="contact-icon">☎️</div>
-          <div class="contact-info"><label>Teléfono</label><strong><a href="tel:51219282" style="color:var(--blue);">5121-9282</a></strong></div>
+          <div class="contact-info"><label>Teléfono</label><strong><a href="tel:32974228" style="color:var(--blue);">5121-9282</a></strong></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💬</div>

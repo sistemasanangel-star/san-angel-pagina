@@ -17,10 +17,11 @@ function renderHeader(activePage = '') {
       <li><a href="laboratorio.html" ${activePage==='laboratorio'?'class="active"':''}>Laboratorio</a></li>
       <li><a href="instalaciones.html" ${activePage==='instalaciones'?'class="active"':''}>Instalaciones</a></li>
       <li><a href="contacto.html" class="nav-cta ${activePage==='contacto'?'active':''}">Contáctanos</a></li>
+      <li><a href="referentes.html" style="color:var(--gold);font-weight:600;" class="${activePage==='referentes'?'active':''}">🔐 Referentes</a></li>
     </ul>
 
     <div class="nav-emergency">
-      <a href="tel:51219282" class="emergency-pill">
+      <a href="tel:32974228" class="emergency-pill">
         <span class="dot"></span>
         Emergencias 24h
       </a>
@@ -33,14 +34,13 @@ function renderHeader(activePage = '') {
 </header>
 
 <nav class="mobile-nav">
-  <button class="mobile-nav-close" aria-label="Cerrar">✕</button>
   <a href="../index.html">Inicio</a>
   <a href="servicios.html">Servicios</a>
   <a href="procedimientos.html">Procedimientos</a>
   <a href="laboratorio.html">Laboratorio</a>
   <a href="instalaciones.html">Instalaciones</a>
   <a href="contacto.html">Contáctanos</a>
-  <a href="tel:51219282" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 5121-9282</a>
+  <a href="tel:32974228" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 3297-4228</a>
 </nav>
 `;
 }
@@ -60,10 +60,11 @@ function renderHeaderHome(activePage = '') {
       <li><a href="pages/laboratorio.html" ${activePage==='laboratorio'?'class="active"':''}>Laboratorio</a></li>
       <li><a href="pages/instalaciones.html" ${activePage==='instalaciones'?'class="active"':''}>Instalaciones</a></li>
       <li><a href="pages/contacto.html" class="nav-cta ${activePage==='contacto'?'active':''}">Contáctanos</a></li>
+      <li><a href="pages/referentes.html" style="color:var(--gold);font-weight:600;" class="${activePage==='referentes'?'active':''}">🔐 Referentes</a></li>
     </ul>
 
     <div class="nav-emergency">
-      <a href="tel:51219282" class="emergency-pill">
+      <a href="tel:32974228" class="emergency-pill">
         <span class="dot"></span>
         Emergencias 24h
       </a>
@@ -76,14 +77,14 @@ function renderHeaderHome(activePage = '') {
 </header>
 
 <nav class="mobile-nav">
-  <button class="mobile-nav-close" aria-label="Cerrar">✕</button>
   <a href="index.html">Inicio</a>
   <a href="pages/servicios.html">Servicios</a>
   <a href="pages/procedimientos.html">Procedimientos</a>
   <a href="pages/laboratorio.html">Laboratorio</a>
   <a href="pages/instalaciones.html">Instalaciones</a>
+  <a href="pages/referentes.html" style="color:var(--gold);">🔐 Médicos Referentes</a>
   <a href="pages/contacto.html">Contáctanos</a>
-  <a href="tel:51219282" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 5121-9282</a>
+  <a href="tel:32974228" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 3297-4228</a>
 </nav>
 `;
 }
@@ -104,7 +105,7 @@ function renderFooter(isSubpage = false) {
         </div>
         <p>Salud para tu familia. Atención médica integral con excelencia, precisión y trato humano. Disponibles 24 horas al día, los 7 días de la semana.</p>
         <div style="display:flex; gap:0.8rem; margin-top:0.5rem;">
-          <a href="tel:51219282" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">📞</a>
+          <a href="tel:32974228" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">📞</a>
           <a href="https://wa.me/50232974228" target="_blank" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">💬</a>
           <a href="mailto:sanatoriosanangel@gmail.com" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✉️</a>
         </div>
@@ -133,7 +134,7 @@ function renderFooter(isSubpage = false) {
         <h5>Contacto</h5>
         <ul>
           <li style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-bottom:0.3rem;">📍 4ta. Av. 1-78 Z.1, Chimaltenango</li>
-          <li><a href="tel:51219282">☎️ 5121-9282</a></li>
+          <li><a href="tel:32974228">☎️ 3297-4228</a></li>
           <li><a href="https://wa.me/50232974228">📱 3297-4228</a></li>
           <li><a href="mailto:sanatoriosanangel@gmail.com">✉️ Email</a></li>
         </ul>

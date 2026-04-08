@@ -4,131 +4,81 @@
 // ═══════════════════════════════════════════════
 
 const KNOWLEDGE_BASE = [
-  // ─── SALUDOS ───
   {
-    patterns: ["hola", "buenos días", "buenas tardes", "buenas noches", "buenas", "hi", "hello", "saludos"],
-    response: "¡Hola! 👋 Bienvenido al Hospital San Ángel. Estoy aquí para ayudarte con información sobre nuestros servicios, precios y horarios. ¿En qué puedo asistirte hoy?",
-    category: "saludo"
+    patterns: ["hola", "buenos", "buenas", "hi", "saludos", "hey"],
+    response: "¡Hola! 👋 Soy el asistente del <strong>Hospital San Ángel</strong>. Puedo darte información sobre precios, servicios y más.\n\n¿Sobre qué procedimiento quieres saber el precio?"
   },
-  // ─── HORARIOS ───
   {
-    patterns: ["horario", "horarios", "hora", "horas", "abierto", "cuando atienden", "atienden", "abren", "cierran", "disponible"],
-    response: "🕐 El Hospital San Ángel ofrece <strong>servicio 24 horas al día, los 7 días de la semana</strong>, incluyendo días feriados. Esto incluye:\n• Consultas médicas\n• Emergencias\n• Laboratorio clínico\n• Rayos X\n• Ultrasonidos\n• Procedimientos quirúrgicos\n\n¿Necesitas información específica de algún servicio?",
-    category: "horarios"
+    patterns: ["histerectomia", "histerectomía", "utero", "útero", "uterina"],
+    response: "🔹 <strong>Histerectomía</strong>\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico (Ceftriaxona) + Analgésico (Diclofenaco)\n• Soluciones intravenosas + Sonda Foley\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n¿Deseas agendar o tienes más preguntas? 📞 <strong>3297-4228</strong>"
   },
-  // ─── UBICACIÓN ───
   {
-    patterns: ["donde", "dirección", "ubicación", "ubicados", "como llegar", "mapa", "dónde están", "chimaltenango", "zona 1"],
-    response: "📍 Nos encontramos en:\n\n<strong>4ta. Avenida 1-78, Zona 1\nChimaltenango, Guatemala</strong>\n\nContamos con parqueo propio en las instalaciones. Puedes encontrarnos en Google Maps buscando 'Hospital San Ángel Chimaltenango'.",
-    category: "ubicacion"
+    patterns: ["apendice", "apéndice", "apendicectomia", "apendicectomía"],
+    response: "🔹 <strong>Apendicectomía</strong>\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico (Ceftriaxona) + Analgésico (Diclofenaco)\n• Soluciones intravenosas\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n⚡ Disponible como urgencia las 24h. Llama al <strong>3297-4228</strong>"
   },
-  // ─── CONTACTO ───
   {
-    patterns: ["teléfono", "telefono", "número", "numero", "llamar", "contacto", "whatsapp", "comunicarse", "contactar"],
-    response: "📞 Puedes contactarnos por:\n\n• <strong>WhatsApp:</strong> 3297-4228\n• <strong>Teléfono:</strong> 5121-9282\n• <strong>Correo:</strong> sanatoriosanangel@gmail.com\n\nPara emergencias, llama directamente al <strong>5121-9282</strong>. Atendemos las 24 horas. 🚨",
-    category: "contacto"
+    patterns: ["hernia", "hernioplastia"],
+    response: "🔹 <strong>Hernioplastia</strong>\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n¿Quieres más información? 📞 <strong>3297-4228</strong>"
   },
-  // ─── EMERGENCIAS ───
   {
-    patterns: ["emergencia", "urgencia", "urgente", "accidente", "emergencias", "urgencias", "grave", "ayuda"],
-    response: "🚨 <strong>EMERGENCIAS 24 HORAS</strong>\n\nLlama AHORA al:\n• 📱 3297-4228 (WhatsApp)\n• ☎️ 5121-9282\n\nContamos con servicio de ambulancia disponible las 24 horas. Nuestro equipo de emergencias está listo para atenderte de inmediato.\n\n¿Necesitas el servicio de ambulancia?",
-    category: "emergencias"
+    patterns: ["colecistecomia", "colecistectomia", "colecistectomía", "vesicula", "vesícula", "laparoscopia", "laparoscopica", "laparoscópica"],
+    response: "🔹 <strong>Colecistectomía</strong>\n\n💰 <strong>Sin video (abierta):</strong> Q8,600\n💰 <strong>Con video (laparoscópica):</strong> Q13,500\n\n✅ <strong>Incluye ambas:</strong>\n• Sala de operaciones equipada\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Materiales quirúrgicos\n• Drenaje de penrose\n\n¿Cuál te interesa? Llama al <strong>3297-4228</strong>"
   },
-  // ─── AMBULANCIA ───
   {
-    patterns: ["ambulancia", "traslado", "transporte", "recoger"],
-    response: "🚑 Contamos con <strong>servicio de ambulancia 24 horas</strong>, todos los días de la semana para:\n• Emergencias\n• Traslados de pacientes\n\nPara solicitar la ambulancia llama al:\n• 📱 3297-4228\n• ☎️ 5121-9282",
-    category: "ambulancia"
+    patterns: ["prostata", "próstata"],
+    response: "🔹 <strong>Cirugía de Próstata</strong>\n\n💰 <strong>Con video:</strong> Q13,500\n💰 <strong>Abierta:</strong> Q9,500\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones equipada\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Sonda Foley + Bolsa recolectora\n• Materiales quirúrgicos\n\n📞 Para más info: <strong>3297-4228</strong>"
   },
-  // ─── SERVICIOS GENERALES ───
   {
-    patterns: ["servicios", "que ofrecen", "qué tienen", "que tienen", "ofrecen"],
-    response: "🏥 El Hospital San Ángel ofrece los siguientes servicios, <strong>todos disponibles 24 horas</strong>:\n\n• 👨‍⚕️ Consultas médicas\n• 🚨 Emergencias\n• 🚑 Ambulancia\n• 👩‍⚕️ Médicos especialistas\n• ⚕️ Procedimientos quirúrgicos\n• 🔬 Laboratorio clínico\n• 📡 Ultrasonidos\n• ☢️ Rayos X\n• 🧠 Tomografías\n• ❤️ Electrocardiograma (EKG)\n• 🛏️ Habitaciones privadas y semiprivadas\n• 👶 UCI Adultos, Pediátrica y Neonatal\n\n¿Te interesa algún servicio en particular?",
-    category: "servicios"
+    patterns: ["cesarea", "cesárea"],
+    response: "🔹 <strong>Cesárea</strong>\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Oxitocina + Antibiótico + Analgésico\n• Gotas de Cloranfernicol\n• Pañales adulto y pediátricos\n• Sonda Foley + Soluciones IV\n• Atención al bebé incluida\n\n🏥 Disponible las 24h. Llama al <strong>3297-4228</strong>"
   },
-  // ─── CIRUGÍAS / PROCEDIMIENTOS ───
   {
-    patterns: ["cirugía", "cirugia", "operación", "operacion", "quirúrgico", "quirurgico", "procedimiento", "intervención"],
-    response: "⚕️ Realizamos procedimientos quirúrgicos <strong>las 24 horas</strong>:\n\n• Histerectomía\n• Apendicectomía\n• Hernioplastia\n• Colecistectomía (con y sin video)\n• Cirugía de próstata (con y sin video)\n• Cesáreas\n• Partos\n• Legrado\n• AMEU\n\nCada procedimiento incluye laboratorios pre-operatorios, medicamentos, encamamiento y alimentación. Para más detalles sobre precios, contáctanos al <strong>5121-9282</strong>.",
-    category: "cirugias"
+    patterns: ["parto", "dar a luz", "nacimiento", "labor"],
+    response: "🔹 <strong>Parto Vaginal</strong>\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de partos equipada\n• 24h encamamiento y alimentación\n• Oxitocina + Vitamina K\n• Gotas de Cloranfernicol\n• Pañales adulto y pediátricos\n• Sonda de aspiración\n• Atención al bebé incluida\n\n🏥 Disponible las 24h. Llama al <strong>3297-4228</strong>"
   },
-  // ─── LABORATORIO ───
   {
-    patterns: ["laboratorio", "examen", "análisis", "analisis", "sangre", "orina", "muestra", "resultado", "prueba"],
-    response: "🔬 Nuestro <strong>Laboratorio Clínico</strong> está disponible <strong>24 horas</strong> con análisis de:\n\n• Hematología\n• Coagulación\n• Enzimas y bioquímica\n• Electrolitos\n• Urología y coprología\n• Microbiología\n• Hormonas\n• Marcadores tumorales\n• Drogas e inmunología\n\nResultados confiables, prontos y precisos. ¿Necesitas más información?",
-    category: "laboratorio"
+    patterns: ["legrado"],
+    response: "🔹 <strong>Legrado</strong>\n\n💰 Precio: <strong>Q6,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• 24h encamamiento y alimentación\n• Pañal para adulto\n• Atención médica y enfermería\n\n⚠️ Medicamentos tienen costo adicional.\n📞 Info: <strong>3297-4228</strong>"
   },
-  // ─── ULTRASONIDO ───
   {
-    patterns: ["ultrasonido", "eco", "ecosonograma", "ecografía", "ecografia", "embarazo", "prenatal"],
-    response: "📡 Ofrecemos <strong>Ultrasonidos 24 horas</strong>:\n\n• Abdominal (hígado, riñones)\n• Obstétrico (embarazo)\n\nDiagnósticos certeros y precisos. Para más información o citas llama al <strong>5121-9282</strong>.",
-    category: "ultrasonido"
+    patterns: ["ameu"],
+    response: "🔹 <strong>AMEU</strong>\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala equipada (hora y media)\n• 12 a 18h encamamiento y alimentación\n• Pañal para adulto\n• Atención médica y enfermería\n\n⚠️ Medicamentos tienen costo adicional.\n📞 Info: <strong>3297-4228</strong>"
   },
-  // ─── RAYOS X ───
   {
-    patterns: ["rayos x", "radiografía", "radiografia", "rx", "placa"],
-    response: "☢️ Servicio de <strong>Rayos X 24 horas</strong> con menos radiación y diagnóstico confiable. Realizamos:\n\n• Tórax\n• Columna\n• Abdomen y pelvis\n• Cabeza y cuello\n• Extremidades superiores e inferiores",
-    category: "rayos_x"
+    patterns: ["precio", "precios", "costo", "cuanto", "cuánto", "tarifa", "cobran", "procedimiento", "procedimientos", "cirugia", "cirugía"],
+    response: "💰 <strong>Precios de procedimientos:</strong>\n\n🔹 Histerectomía — Q8,500\n🔹 Apendicectomía — Q7,500\n🔹 Hernioplastia — Q8,500\n🔹 Colecistectomía — Q8,600\n🔹 Colecistectomía laparoscópica — Q13,500\n🔹 Próstata con video — Q13,500\n🔹 Próstata abierta — Q9,500\n🔹 Cesárea — Q7,500\n🔹 Parto — Q4,500\n🔹 Legrado — Q6,500\n🔹 AMEU — Q4,500\n\n👆 Escribe el nombre del procedimiento para ver <strong>qué incluye</strong> exactamente."
   },
-  // ─── TOMOGRAFÍA ───
   {
-    patterns: ["tomografía", "tomografia", "tac", "scanner", "scan"],
-    response: "🧠 Contamos con <strong>Tomografías Computarizadas</strong>, disponibles con diagnóstico rápido y oportuno:\n\n• Cabeza y cuello\n• Tórax\n• Abdomen\n• Pelvis y extremidades\n\nPara más información llama al <strong>5121-9282</strong>.",
-    category: "tomografia"
+    patterns: ["horario", "hora", "abierto", "cuando", "atienden", "24"],
+    response: "🕐 Estamos abiertos <strong>las 24 horas, los 7 días</strong> incluyendo feriados. Emergencias, laboratorio y quirófano siempre disponibles."
   },
-  // ─── EKG ───
   {
-    patterns: ["electrocardiograma", "ekg", "ecg", "corazón", "cardio"],
-    response: "❤️ Ofrecemos <strong>Electrocardiograma (EKG)</strong>, una prueba médica rápida, indolora y no invasiva para evaluar la salud de tu corazón. Disponible las 24 horas.",
-    category: "ekg"
+    patterns: ["donde", "dirección", "ubicación", "llegar", "mapa", "chimaltenango"],
+    response: "📍 <strong>4ta. Avenida 1-78, Zona 1, Chimaltenango</strong>\n\nCerca del centro. Parqueo propio disponible 24h sin costo. 🅿️"
   },
-  // ─── HABITACIONES ───
   {
-    patterns: ["habitación", "habitacion", "cuarto", "cuartos", "cama", "encamamiento", "internar", "hospedaje"],
-    response: "🛏️ Contamos con <strong>dos tipos de habitaciones</strong>:\n\n<strong>Habitación Privada:</strong>\n• Baño y ducha privada\n• Espacio amplio con área abierta\n• Cama hospitalaria, TV, mesa y sillones\n• Precio adicional: Q850 por 24 hrs\n\n<strong>Habitación Semiprivada:</strong>\n• Espacio amplio\n• Cama hospitalaria, TV, mesa y sillones\n• Sin baño privado\n\nAmbas incluyen servicio de enfermería 24 horas.",
-    category: "habitaciones"
+    patterns: ["emergencia", "urgencia", "urgente", "grave", "ayuda"],
+    response: "🚨 <strong>EMERGENCIAS — Llama ahora:</strong>\n\n📞 <strong>3297-4228</strong>\n📞 <strong>3994-4181</strong>\n\nDisponibles las 24 horas, los 7 días."
   },
-  // ─── UCI / INTENSIVO ───
   {
-    patterns: ["uci", "intensivo", "cuidados intensivos", "icu", "neonatal", "pediátrico", "pediatrico", "neonato", "recién nacido"],
-    response: "🏥 Contamos con <strong>Áreas de Cuidados Intensivos</strong> con monitoreo constante 24 horas:\n\n• 🧑‍⚕️ UCI Adultos\n• 👧 UCI Pediátrica\n• 👶 UCI Neonatal\n\nCubículos individuales con personal médico especializado para atender complicaciones severas de salud.",
-    category: "uci"
+    patterns: ["ambulancia", "traslado"],
+    response: "🚑 Sí, tenemos ambulancia disponible <strong>24 horas</strong> para emergencias y traslados.\n\nLlama al <strong>3297-4228</strong> para solicitarla."
   },
-  // ─── CESÁREA ───
   {
-    patterns: ["cesárea", "cesarea", "parto", "dar a luz", "nacimiento", "bebé", "bebe", "embarazada"],
-    response: "👶 Atendemos <strong>partos y cesáreas 24 horas</strong>. Cada procedimiento incluye:\n• Sala de operaciones\n• Encamamiento y alimentación (24-48 hrs)\n• Medicamentos incluidos\n• Atención médica y de enfermería\n\nPara más información sobre precios o programar tu procedimiento, contáctanos al <strong>5121-9282</strong>.",
-    category: "maternidad"
+    patterns: ["laboratorio", "examen", "análisis", "analisis", "sangre"],
+    response: "🔬 Laboratorio clínico disponible <strong>24 horas</strong>.\n\nRealizamos: Hematología, Bioquímica, Hormonas, Microbiología, Marcadores tumorales y más. Resultados confiables y rápidos."
   },
-  // ─── POR QUÉ ELEGIRNOS ───
   {
-    patterns: ["por qué", "porque", "ventaja", "ventajas", "diferencia", "mejor", "bueno", "calidad", "recomendación"],
-    response: "⭐ ¿Por qué elegir el Hospital San Ángel?\n\n• ✅ <strong>Precisión</strong> en diagnóstico y tratamiento\n• ⚡ <strong>Rapidez y eficacia</strong> en todos los servicios\n• 🏗️ <strong>Instalaciones adecuadas y seguras</strong>\n• 👨‍⚕️ <strong>Profesionales apasionados</strong> con vocación de servicio\n• 🕐 <strong>Atención 24/7</strong> todos los días del año\n\nNuestro compromiso es la atención responsable y el respeto a la vida.",
-    category: "info"
+    patterns: ["intensivo", "uci", "neonatal", "pediatrico", "pediátrico"],
+    response: "🏥 <strong>Áreas Intensivas 24h:</strong>\n\n👨‍⚕️ Intensivo Adultos — cubículos individuales\n👧 Intensivo Pediátrico — atención especializada\n👶 Intensivo Neonatal — incubadoras modernas\n\nMonitoreo constante. Llama al <strong>3297-4228</strong>"
   },
-  // ─── ESPECIALISTAS ───
   {
-    patterns: ["especialista", "médico", "medico", "doctor", "doctores", "especialidad"],
-    response: "👨‍⚕️ Contamos con <strong>médicos especialistas</strong> disponibles para atenderte. Para consultar disponibilidad de especialistas o agendar una cita, contáctanos:\n\n• 📱 WhatsApp: 3297-4228\n• ☎️ Teléfono: 5121-9282",
-    category: "especialistas"
+    patterns: ["habitacion", "habitación", "privada", "cuarto", "encamamiento"],
+    response: "🛏️ <strong>Habitaciones:</strong>\n\n• Semiprivada — incluida en todos los paquetes\n• Privada — Q850 adicionales por día (baño, TV, área de visitas)\n• Encamamiento adicional — Q1,250 por día extra\n\n¿Tienes alguna otra pregunta?"
   },
-  // ─── PRECIOS GENERALES ───
   {
-    patterns: ["precio", "precios", "costo", "costos", "cuánto cuesta", "cuanto cuesta", "tarifa", "tarifas", "cobran"],
-    response: "💰 Para conocer los precios de nuestros procedimientos y servicios, te invitamos a:\n\n• Visitar nuestra sección de <strong>Procedimientos</strong> en el menú\n• Contactarnos directamente al <strong>5121-9282</strong> o <strong>3297-4228</strong> (WhatsApp)\n\nNuestro equipo te dará información detallada y personalizada según tus necesidades.",
-    category: "precios"
-  },
-  // ─── AGRADECIMIENTO ───
-  {
-    patterns: ["gracias", "muchas gracias", "ok gracias", "genial", "excelente", "perfecto", "listo"],
-    response: "¡Con mucho gusto! 😊 En Hospital San Ángel estamos para servirte. Si tienes más preguntas, no dudes en escribirnos. Recuerda que para emergencias puedes llamar al <strong>5121-9282</strong> las 24 horas. ¡Que tengas un excelente día!",
-    category: "despedida"
-  },
-  // ─── DESPEDIDA ───
-  {
-    patterns: ["adiós", "adios", "hasta luego", "bye", "chao", "hasta pronto"],
-    response: "¡Hasta luego! 👋 Recuerda que el Hospital San Ángel está disponible las <strong>24 horas</strong> para cualquier emergencia. Cuídate mucho. 💙",
-    category: "despedida"
+    patterns: ["gracias", "ok", "listo", "perfecto"],
+    response: "¡Con mucho gusto! 😊 Cualquier otra duda estamos aquí las 24h. ¡Que estés bien!"
   },
 ];
 
@@ -283,13 +233,27 @@ function initStickyHeader() {
 function initMobileNav() {
   const hamburger = document.querySelector('.hamburger');
   const mobileNav = document.querySelector('.mobile-nav');
-  const closeBtn = document.querySelector('.mobile-nav-close');
   if (!hamburger || !mobileNav) return;
 
-  hamburger.addEventListener('click', () => mobileNav.classList.add('open'));
-  if (closeBtn) closeBtn.addEventListener('click', () => mobileNav.classList.remove('open'));
-  mobileNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => mobileNav.classList.remove('open'));
+  function openMenu() {
+    mobileNav.classList.add('open');
+    hamburger.classList.add('active');
+  }
+  function closeMenu() {
+    mobileNav.classList.remove('open');
+    hamburger.classList.remove('active');
+  }
+
+  hamburger.addEventListener('click', () => {
+    mobileNav.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  // Close when clicking a link
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  // Close when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) closeMenu();
   });
 }
 
@@ -318,6 +282,60 @@ document.addEventListener('DOMContentLoaded', () => {
   new HospitalChatbot();
   initScrollAnimations();
   initStickyHeader();
+  initCarousels();
   initMobileNav();
   initAccordion();
 });
+
+// ─── PHOTO CAROUSEL ───
+function initCarousels() {
+  document.querySelectorAll('.carousel').forEach(car => {
+    const track = car.querySelector('.carousel-track');
+    const slides = car.querySelectorAll('.carousel-slide');
+    const prev = car.querySelector('.carousel-prev');
+    const next = car.querySelector('.carousel-next');
+    const dots = car.querySelector('.carousel-dots');
+    if (!track || slides.length === 0) return;
+
+    let cur = 0;
+    let autoTimer = null;
+
+    // Build dots
+    if (dots) {
+      dots.innerHTML = Array.from(slides).map((_, i) =>
+        `<button class="carousel-dot ${i===0?'active':''}" data-i="${i}"></button>`
+      ).join('');
+      dots.querySelectorAll('.carousel-dot').forEach(d => {
+        d.addEventListener('click', () => goTo(Number(d.dataset.i)));
+      });
+    }
+
+    function goTo(i) {
+      cur = (i + slides.length) % slides.length;
+      track.style.transform = `translateX(-${cur * 100}%)`;
+      car.querySelectorAll('.carousel-dot').forEach((d, j) =>
+        d.classList.toggle('active', j === cur)
+      );
+      resetAuto();
+    }
+
+    function resetAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(cur + 1), 4500);
+    }
+
+    if (prev) prev.addEventListener('click', () => goTo(cur - 1));
+    if (next) next.addEventListener('click', () => goTo(cur + 1));
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, {passive:true});
+    track.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) goTo(dx < 0 ? cur + 1 : cur - 1);
+    }, {passive:true});
+
+    resetAuto();
+  });
+}
+
