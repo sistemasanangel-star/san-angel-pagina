@@ -23,7 +23,7 @@
       position: absolute; inset: 0;
       background-image: url('../assets/fotos/portada.jpg');
       background-size: cover;
-      background-position: center;
+      background-position: center 55%;
       filter: brightness(0.55);
     }
     .lock-left-overlay {
@@ -38,6 +38,7 @@
       flex-direction: column;
       justify-content: center;
     }
+    .lock-left-content-bottom { /* desktop: sin cambio especial */ }
     .lock-badge {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(201,168,76,0.2);
@@ -174,96 +175,191 @@
     .com-badge { background:rgba(201,168,76,0.1); border:1px solid var(--gold-border); color:var(--gold); border-radius:100px; padding:3px 10px; font-size:0.78rem; font-weight:600; }
 
     @media (max-width: 768px) {
-      /* Single full-screen layout — photo covers everything */
+
+      /* ═══════════════════════════════════════════════
+         MÓVIL: Panel izquierdo (foto+info) apilado arriba
+         Panel derecho (login) abajo. Todo a tamaño normal.
+         ═══════════════════════════════════════════════ */
+
+      /* Una columna */
       .lock-screen {
         grid-template-columns: 1fr;
-        min-height: 100vh;
-        position: relative;
+        background: #0B1526;
       }
 
-      /* Photo covers the entire screen as background */
+      /* Panel izquierdo: la foto cubre el div, el contenido
+         empuja la altura hacia abajo (no fixed height) */
       .lock-left {
-        display: block;
-        position: fixed !important;
-        inset: 0;
-        z-index: 0;
-        min-height: auto;
+        position: relative !important;
+        overflow: hidden !important;
       }
-      .lock-left-bg { filter: brightness(0.45); }
+      .lock-left-bg {
+        position: absolute !important;
+        inset: 0 !important;
+        filter: brightness(0.45) !important;
+        background-position: center 45% !important;
+      }
       .lock-left-overlay {
+        position: absolute !important;
+        inset: 0 !important;
         background: linear-gradient(180deg,
-          rgba(11,21,38,0.55) 0%,
-          rgba(11,21,38,0.75) 60%,
-          rgba(11,21,38,0.92) 100%);
+          rgba(11,21,38,0.0) 0%,
+          rgba(11,21,38,0.0) 30%,
+          rgba(11,21,38,0.65) 62%,
+          rgba(11,21,38,0.97) 88%,
+          rgba(11,21,38,1.0) 100%) !important;
       }
-      /* Left content sits INSIDE the scrollable flow */
+      /* El contenido es relativo y empuja la foto */
       .lock-left-content {
-        position: relative;
-        z-index: 2;
-        padding: 5rem 1.4rem 2rem;
-        min-height: auto;
-        height: auto;
-        justify-content: flex-start;
+        position: relative !important;
+        z-index: 2 !important;
+        padding: 5rem 1.5rem 2.2rem !important;
+        height: auto !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-end !important;
       }
-      .lock-left-content h1 { font-size: 2.2rem; margin-bottom: 0.8rem; }
-      .lock-left-content p  { font-size: 0.88rem; margin-bottom: 1.5rem; line-height: 1.65; }
-      .lock-badge { margin-bottom: 1rem; }
+
+      /* Logo flotante en esquina superior */
+      .mobile-only-logo {
+        display: block !important;
+        position: absolute !important;
+        top: 1.2rem !important;
+        left: 1.4rem !important;
+        height: 44px !important;
+        width: auto !important;
+        filter: drop-shadow(0 2px 14px rgba(0,0,0,0.9)) !important;
+        margin: 0 !important;
+      }
+
+      /* Wrapper del contenido inferior */
+      .lock-left-content-bottom { display: flex !important; flex-direction: column !important; }
+
+      /* Badge */
+      .lock-badge { margin-bottom: 0.7rem; padding: 5px 15px; display: inline-flex !important; width: fit-content; }
+      .lock-badge span { font-size: 0.67rem; }
+
+      /* Título completo como en PC */
+      .lock-left-content h1 {
+        font-size: 2.4rem !important;
+        color: white !important;
+        margin-bottom: 0.7rem !important;
+        line-height: 1.1 !important;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.8) !important;
+      }
+
+      /* Descripción completa */
+      .lock-left-content-bottom > p {
+        font-size: 0.96rem !important;
+        line-height: 1.7 !important;
+        color: rgba(255,255,255,0.75) !important;
+        margin-bottom: 1.5rem !important;
+        display: block !important;
+        max-width: 100% !important;
+      }
+
+      /* Beneficios: misma estructura que PC */
+      .lock-benefits-toggle { display: none !important; }
       .lock-benefits {
-        gap: 0.8rem;
-        margin-bottom: 1.5rem;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0.65rem !important;
+        margin-bottom: 1.4rem !important;
       }
       .lock-benefit {
-        padding: 0.85rem 1rem;
-        background: rgba(255,255,255,0.1);
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        padding: 1rem 1.1rem !important;
+        min-width: unset !important;
+        max-width: unset !important;
+        background: rgba(255,255,255,0.07) !important;
+        border: 1px solid rgba(201,168,76,0.2) !important;
+        border-radius: 10px !important;
+        gap: 14px !important;
+        backdrop-filter: blur(8px) !important;
       }
-      .lock-benefit-icon { width: 36px; height: 36px; font-size: 1rem; }
-      .lock-benefit h4 { font-size: 0.85rem; }
-      .lock-benefit p  { font-size: 0.76rem; }
-      .lock-contact-row { gap: 0.7rem; margin-bottom: 0; }
+      .lock-benefit-icon {
+        width: 38px !important;
+        height: 38px !important;
+        font-size: 1.05rem !important;
+        flex-shrink: 0 !important;
+        background: rgba(201,168,76,0.15) !important;
+        border: 1px solid rgba(201,168,76,0.25) !important;
+        border-radius: 8px !important;
+        margin-top: 1px !important;
+      }
+      .lock-benefit h4 {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: white !important;
+        margin-bottom: 3px !important;
+      }
+      .lock-benefit p {
+        font-size: 0.8rem !important;
+        display: block !important;
+        color: rgba(255,255,255,0.48) !important;
+        margin: 0 !important;
+        line-height: 1.5 !important;
+      }
 
-      /* Form panel — overlays the same background */
+      /* Botones de contacto */
+      .lock-contact-row {
+        display: flex !important;
+        gap: 0.75rem !important;
+        flex-wrap: nowrap !important;
+      }
+      .lock-contact-row .btn {
+        flex: 1 !important;
+        justify-content: center !important;
+        font-size: 0.86rem !important;
+        padding: 0.7rem 1rem !important;
+      }
+
+      /* Panel derecho: fondo crema, login grande */
       .lock-right {
-        position: relative;
-        z-index: 2;
-        padding: 2rem 1.4rem 3rem;
-        background: transparent;
-        align-items: stretch;
+        background: #F5F0E8 !important;
+        padding: 2.2rem 1.5rem 3.5rem !important;
+        border-top: 3px solid #C9A84C !important;
+        align-items: stretch !important;
       }
-      /* Form card on mobile: dark glass look to match the photo bg */
       .lock-card {
-        background: rgba(255,255,255,0.07);
-        border: 1px solid rgba(201,168,76,0.3);
-        border-radius: var(--radius-lg);
-        padding: 1.8rem 1.4rem;
-        backdrop-filter: blur(16px);
-        max-width: 100%;
+        background: white !important;
+        border: 1px solid #EDEAE3 !important;
+        border-radius: 20px !important;
+        padding: 2.2rem 1.6rem !important;
+        box-shadow: 0 8px 32px rgba(11,21,38,0.12) !important;
+        max-width: 100% !important;
       }
-      .lock-card h2     { color: white; }
-      .lock-card .lock-sub { color: rgba(255,255,255,0.55); }
-      .lock-label       { color: rgba(255,255,255,0.7); }
+      .lock-mobile-chips { display: none !important; }
+      .lock-card-logo img   { height: 48px !important; }
+      .lock-card-logo       { margin-bottom: 1.4rem !important; }
+      .lock-card h2         { font-size: 2rem !important; color: #0B1526 !important; margin-bottom: 0.4rem !important; }
+      .lock-card .lock-sub  { font-size: 0.92rem !important; margin-bottom: 1.6rem !important; color: #8A8070 !important; line-height: 1.65 !important; }
+      .lock-label           { color: #4A4438 !important; font-size: 0.82rem !important; }
       .lock-input {
-        background: rgba(255,255,255,0.1);
-        border-color: rgba(201,168,76,0.35);
-        color: white;
+        padding: 1rem 1.2rem !important;
+        font-size: 1rem !important;
+        background: #FAFAFA !important;
+        border-color: #EDEAE3 !important;
+        color: #0B1526 !important;
+        margin-bottom: 1rem !important;
       }
-      .lock-input::placeholder { color: rgba(255,255,255,0.35); }
-      .lock-input:focus { border-color: var(--gold); background: rgba(255,255,255,0.15); }
-      .lock-hint {
-        background: rgba(255,255,255,0.06);
-        border-color: rgba(201,168,76,0.25);
-        border-left-color: var(--gold);
-      }
-      .lock-hint p      { color: rgba(255,255,255,0.5); }
-      .lock-divider     { border-color: rgba(255,255,255,0.12); }
-      .lock-join h4     { color: rgba(255,255,255,0.9); }
-      .lock-join p      { color: rgba(255,255,255,0.45); }
-      /* Logo dark → transparent on dark bg */
-      .lock-card-logo img { filter: brightness(0) invert(1); opacity: 0.9; }
+      .lock-input:focus     { border-color: #C9A84C !important; box-shadow: 0 0 0 3px rgba(201,168,76,0.12) !important; }
+      .lock-card > .btn     { padding: 1.05rem !important; font-size: 1rem !important; }
+      .lock-hint            { background: #F5F0E8 !important; border-left-color: #C9A84C !important; margin-top: 1.2rem !important; }
+      .lock-hint p          { color: #8A8070 !important; font-size: 0.85rem !important; }
+      .lock-divider         { border-color: #EDEAE3 !important; margin: 1.6rem 0 !important; }
+      .lock-join h4         { color: #0B1526 !important; font-size: 1rem !important; }
+      .lock-join p          { color: #8A8070 !important; font-size: 0.88rem !important; margin-bottom: 1rem !important; }
+      .lock-join > div      { gap: 0.65rem !important; flex-wrap: nowrap !important; }
+      .lock-join .btn       { flex: 1 !important; justify-content: center !important; padding: 0.75rem 0.8rem !important; }
     }
 
     @media (max-width: 480px) {
-      .lock-left-content { padding-top: 4.5rem; }
-      .lock-left-content h1 { font-size: 1.9rem; }
+      .lock-left-content h1 { font-size: 1.9rem !important; }
+      .lock-left-content-bottom > p { font-size: 0.88rem !important; }
     }
   </style>
 </head>
@@ -278,39 +374,45 @@
     <div class="lock-left-bg"></div>
     <div class="lock-left-overlay"></div>
     <div class="lock-left-content">
-      <div class="lock-badge">
-        <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:block;"></span>
-        <span>Red de Médicos Referentes</span>
-      </div>
-      <h1>Programa de<br><em>Médicos Referentes</em></h1>
-      <p>Únete a nuestra red exclusiva y ofrece a tus pacientes acceso a servicios médicos de calidad con beneficios especiales para ti.</p>
-      <div class="lock-benefits">
-        <div class="lock-benefit">
-          <div class="lock-benefit-icon">💰</div>
-          <div>
-            <h4>Comisiones atractivas</h4>
-            <p>Por cada paciente referido recibes una comisión directa por procedimiento</p>
+      <img src="../assets/img/logo-transparent.png" alt="Hospital San Ángel"
+           style="height:52px;width:auto;filter:drop-shadow(0 2px 12px rgba(201,168,76,0.35));display:none;"
+           class="mobile-only-logo">
+      <!-- Todo el contenido va al fondo de la foto en móvil -->
+      <div class="lock-left-content-bottom" style="margin-top:auto;">
+        <div class="lock-badge">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--gold);display:block;"></span>
+          <span>Red de Médicos Referentes</span>
+        </div>
+        <h1>Programa de<br><em>Médicos Referentes</em></h1>
+        <p>Únete a nuestra red exclusiva y ofrece a tus pacientes acceso a servicios médicos de calidad con beneficios especiales para ti.</p>
+        <div class="lock-benefits" id="benefitsList">
+          <div class="lock-benefit">
+            <div class="lock-benefit-icon">💰</div>
+            <div>
+              <h4>Comisiones atractivas</h4>
+              <p>Por cada paciente referido recibes una comisión directa por procedimiento</p>
+            </div>
+          </div>
+          <div class="lock-benefit">
+            <div class="lock-benefit-icon">🏥</div>
+            <div>
+              <h4>Infraestructura completa</h4>
+              <p>Quirófanos, UCI adultos, pediátrico y neonatal disponibles 24h</p>
+            </div>
+          </div>
+          <div class="lock-benefit">
+            <div class="lock-benefit-icon">📋</div>
+            <div>
+              <h4>Paquetes detallados</h4>
+              <p>Precios especiales y contenido exacto de cada procedimiento</p>
+            </div>
           </div>
         </div>
-        <div class="lock-benefit">
-          <div class="lock-benefit-icon">🏥</div>
-          <div>
-            <h4>Infraestructura completa</h4>
-            <p>Quirófanos, UCI adultos, pediátrico y neonatal disponibles 24h</p>
-          </div>
+        <div class="lock-contact-row">
+          <a href="https://wa.me/50251219282?text=Hola,%20me%20interesa%20unirme%20a%20la%20red%20de%20médicos%20referentes."
+             class="btn btn-outline btn-sm" target="_blank">💬 WhatsApp visitadora</a>
+          <a href="tel:51219282" class="btn btn-primary btn-sm">📞 5121-9282</a>
         </div>
-        <div class="lock-benefit">
-          <div class="lock-benefit-icon">📋</div>
-          <div>
-            <h4>Paquetes detallados</h4>
-            <p>Precios especiales y contenido exacto de cada procedimiento</p>
-          </div>
-        </div>
-      </div>
-      <div class="lock-contact-row">
-        <a href="https://wa.me/50251219282?text=Hola,%20me%20interesa%20unirme%20a%20la%20red%20de%20médicos%20referentes."
-           class="btn btn-outline btn-sm" target="_blank">💬 WhatsApp visitadora</a>
-        <a href="tel:51219282" class="btn btn-primary btn-sm">📞 5121-9282</a>
       </div>
     </div>
   </div>
@@ -732,6 +834,23 @@
 <script>
 document.getElementById('header-root').innerHTML = renderHeader('referentes');
 document.getElementById('footer-root').innerHTML = renderFooter(true);
+
+// Show benefit chips inside form on mobile
+if (window.innerWidth <= 768) {
+  var chips = document.querySelector('.lock-mobile-chips');
+  if (chips) chips.style.display = 'flex';
+}
+
+function toggleBenefits() {
+  var toggle = document.getElementById('benefitsToggle');
+  var list = document.getElementById('benefitsList');
+  var isCollapsed = list.classList.contains('collapsed');
+  list.classList.toggle('collapsed');
+  toggle.classList.toggle('collapsed');
+  toggle.querySelector('span:first-child').textContent = isCollapsed
+    ? 'Ocultar beneficios'
+    : 'Ver beneficios de la red (' + list.children.length + ')';
+}
 
 const ACCESS_CODE = 'SANANGEL2026';
 if (sessionStorage.getItem('refUnlocked') === '1') unlock();

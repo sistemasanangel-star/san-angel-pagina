@@ -93,23 +93,58 @@ function renderFooter(isSubpage = false) {
   const base = isSubpage ? '../' : '';
   return `
 <footer class="site-footer">
-  <div class="footer-inner">
+  <div class="footer-inner container">
+
+    <!-- TOP: emergencia destacada -->
+    <div class="footer-emergency-bar">
+      <div class="footer-emergency-left">
+        <span class="footer-emergency-dot"></span>
+        <span>Atención 24 horas · 365 días del año</span>
+      </div>
+      <div class="footer-emergency-right">
+        <a href="tel:32974228" class="footer-emergency-btn">🚨 3297-4228</a>
+        <a href="https://wa.me/50232974228" target="_blank" class="footer-emergency-btn footer-emergency-btn--wa">💬 WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- MAIN GRID -->
     <div class="footer-top">
+
+      <!-- Marca -->
       <div class="footer-brand">
-        <div class="nav-logo" style="margin-bottom:0;">
+        <div class="footer-logo">
           <div class="logo-icon">✚</div>
           <div class="logo-text">
             <strong>San Ángel</strong>
-            <span>Hospital</span>
+            <span>Hospital · Chimaltenango</span>
           </div>
         </div>
-        <p>Salud para tu familia. Atención médica integral con excelencia, precisión y trato humano. Disponibles 24 horas al día, los 7 días de la semana.</p>
-        <div style="display:flex; gap:0.8rem; margin-top:0.5rem;">
-          <a href="tel:32974228" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">📞</a>
-          <a href="https://wa.me/50232974228" target="_blank" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">💬</a>
-          <a href="mailto:sanatoriosanangel@gmail.com" style="color:rgba(255,255,255,0.4); font-size:1.4rem; transition:color 0.2s;" onmouseover="this.style.color='#42A5F5'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">✉️</a>
+        <p>Salud para tu familia. Atención médica integral con excelencia, precisión y trato humano. Disponibles las 24 horas, los 7 días de la semana.</p>
+        <div class="footer-contact-items">
+          <a href="tel:32974228" class="footer-contact-item">
+            <span class="footer-contact-icon">☎</span>
+            <span>3297-4228</span>
+          </a>
+          <a href="https://wa.me/50232974228" target="_blank" class="footer-contact-item">
+            <span class="footer-contact-icon">💬</span>
+            <span>3297-4228</span>
+          </a>
+          <a href="mailto:sanatoriosanangel@gmail.com" class="footer-contact-item">
+            <span class="footer-contact-icon">✉</span>
+            <span>sanatoriosanangel@gmail.com</span>
+          </a>
+          <a href="https://www.facebook.com/p/Hospital-San-%C3%81ngel-100075453447320/" target="_blank" class="footer-contact-item">
+            <span class="footer-contact-icon" style="font-size:0.85rem;">f</span>
+            <span>Hospital San Ángel</span>
+          </a>
+          <div class="footer-contact-item footer-contact-item--plain">
+            <span class="footer-contact-icon">📍</span>
+            <span>4ta. Av. 1-78, Zona 1, Chimaltenango</span>
+          </div>
         </div>
       </div>
+
+      <!-- Navegación -->
       <div class="footer-col">
         <h5>Navegación</h5>
         <ul>
@@ -118,32 +153,31 @@ function renderFooter(isSubpage = false) {
           <li><a href="${base}pages/procedimientos.html">Procedimientos</a></li>
           <li><a href="${base}pages/laboratorio.html">Laboratorio</a></li>
           <li><a href="${base}pages/instalaciones.html">Instalaciones</a></li>
+          <li><a href="${base}pages/contacto.html">Contáctanos</a></li>
         </ul>
       </div>
+
+      <!-- Servicios -->
       <div class="footer-col">
-        <h5>Servicios</h5>
+        <h5>Servicios 24h</h5>
         <ul>
-          <li><a href="${base}pages/servicios.html#emergencias">Emergencias 24h</a></li>
-          <li><a href="${base}pages/servicios.html#ambulancia">Ambulancia</a></li>
-          <li><a href="${base}pages/laboratorio.html">Laboratorio</a></li>
-          <li><a href="${base}pages/procedimientos.html">Cirugías</a></li>
-          <li><a href="${base}pages/servicios.html#uci">UCI / Intensivo</a></li>
+          <li><a href="${base}pages/servicios.html#emergencias">🚨 Emergencias</a></li>
+          <li><a href="${base}pages/servicios.html#ambulancia">🚑 Ambulancia</a></li>
+          <li><a href="${base}pages/procedimientos.html">⚕️ Cirugías</a></li>
+          <li><a href="${base}pages/laboratorio.html">🔬 Laboratorio</a></li>
+          <li><a href="${base}pages/servicios.html#uci">🏥 UCI / Intensivo</a></li>
+          <li><a href="${base}pages/recorrido.html">🎥 Recorrido virtual</a></li>
         </ul>
       </div>
-      <div class="footer-col">
-        <h5>Contacto</h5>
-        <ul>
-          <li style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-bottom:0.3rem;">📍 4ta. Av. 1-78 Z.1, Chimaltenango</li>
-          <li><a href="tel:32974228">☎️ 3297-4228</a></li>
-          <li><a href="https://wa.me/50232974228">📱 3297-4228</a></li>
-          <li><a href="mailto:sanatoriosanangel@gmail.com">✉️ Email</a></li>
-        </ul>
-      </div>
+
     </div>
+
+    <!-- BOTTOM -->
     <div class="footer-bottom">
-      <p>© 2025 Hospital San Ángel. Todos los derechos reservados.</p>
-      <p>Diseñado con <span>♥</span> para Chimaltenango</p>
+      <p>© 2026 Hospital San Ángel · Chimaltenango, Guatemala · Todos los derechos reservados.</p>
+      <a href="${base}pages/referentes.html" style="color:var(--gold);font-size:0.78rem;opacity:0.7;transition:opacity 0.2s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.7'">🔐 Portal Referentes</a>
     </div>
+
   </div>
 </footer>
 `;

@@ -401,47 +401,56 @@
       <p class="section-desc fade-in fade-in-delay-2">La confianza de las familias de Chimaltenango es nuestra mayor satisfacción.</p>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;" class="fade-in" id="testimoniosGrid">
+    <div style="position:relative;overflow:hidden;" class="fade-in">
+      <!-- Controles -->
+      <div style="display:flex;justify-content:flex-end;gap:0.5rem;margin-bottom:1rem;">
+        <button id="tPrev" aria-label="Anterior" style="width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:1rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.25)'" onmouseout="this.style.background='rgba(201,168,76,0.1)'">‹</button>
+        <button id="tNext" aria-label="Siguiente" style="width:38px;height:38px;border-radius:50%;background:rgba(201,168,76,0.1);border:1px solid rgba(201,168,76,0.3);color:var(--gold);font-size:1rem;cursor:pointer;transition:all 0.2s;" onmouseover="this.style.background='rgba(201,168,76,0.25)'" onmouseout="this.style.background='rgba(201,168,76,0.1)'">›</button>
+      </div>
+      <!-- Track deslizable -->
+      <div style="overflow:hidden;">
+        <div id="testimoniosTrack" style="display:flex;gap:1.4rem;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);">
 
-      <!-- 1 -->
-      <div class="testimonio-card">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text">"Llegué de emergencia a las 3 de la mañana con mi mamá y nos atendieron al instante. El médico fue muy claro y amable. Gracias a Dios y al equipo del Hospital San Ángel, ella se recuperó bien."</p>
-        <div class="testimonio-author">
-          <div class="author-avatar" style="background:var(--gold);">M</div>
-          <div class="author-info">
-            <strong>María Revolorio</strong>
-            <span>Emergencias — Chimaltenango</span>
+          <div class="testimonio-card" style="flex:0 0 calc(33.333% - 1rem);min-width:280px;">
+            <div class="testimonio-stars">★★★★★</div>
+            <p class="testimonio-text">"Llegué de emergencia a las 3 de la mañana con mi mamá y nos atendieron al instante. El médico fue muy claro y amable. Gracias a Dios y al equipo del Hospital San Ángel, ella se recuperó bien."</p>
+            <div class="testimonio-author">
+              <div class="author-avatar" style="background:var(--gold);">M</div>
+              <div class="author-info">
+                <strong>María Revolorio</strong>
+                <span>Emergencias — Chimaltenango</span>
+              </div>
+            </div>
           </div>
+
+          <div class="testimonio-card" style="flex:0 0 calc(33.333% - 1rem);min-width:280px;">
+            <div class="testimonio-stars">★★★★★</div>
+            <p class="testimonio-text">"Mi bebé nació prematura y necesitó cuidados intensivos. Las enfermeras y médicos nos mantuvieron informados en todo momento. Hoy mi hija tiene 2 años y está completamente sana. Eternamente agradecida."</p>
+            <div class="testimonio-author">
+              <div class="author-avatar" style="background:var(--gold);">A</div>
+              <div class="author-info">
+                <strong>Ana Lucía Sáenz</strong>
+                <span>Intensivo Neonatal — Chimaltenango</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonio-card" style="flex:0 0 calc(33.333% - 1rem);min-width:280px;">
+            <div class="testimonio-stars">★★★★★</div>
+            <p class="testimonio-text">"Me operaron de urgencia y el trato fue excelente desde que llegué hasta que me fui. Quirófano bien equipado, médicos muy profesionales. La habitación privada cómoda y limpia. Muy recomendado."</p>
+            <div class="testimonio-author">
+              <div class="author-avatar" style="background:var(--gold);">J</div>
+              <div class="author-info">
+                <strong>Jorge Tzoc</strong>
+                <span>Cirugía — Chimaltenango</span>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <!-- 2 -->
-      <div class="testimonio-card">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text">"Mi bebé nació prematura y necesitó cuidados intensivos. Las enfermeras y médicos nos mantuvieron informados en todo momento. Hoy mi hija tiene 2 años y está completamente sana. Eternamente agradecida."</p>
-        <div class="testimonio-author">
-          <div class="author-avatar" style="background:var(--gold);">A</div>
-          <div class="author-info">
-            <strong>Ana Lucía Sáenz</strong>
-            <span>Intensivo Neonatal — Chimaltenango</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 3 -->
-      <div class="testimonio-card">
-        <div class="testimonio-stars">★★★★★</div>
-        <p class="testimonio-text">"Me operaron de urgencia y el trato fue excelente desde que llegué hasta que me fui. Quirófano bien equipado, médicos muy profesionales. La habitación privada cómoda y limpia. Muy recomendado."</p>
-        <div class="testimonio-author">
-          <div class="author-avatar" style="background:var(--gold);">J</div>
-          <div class="author-info">
-            <strong>Jorge Tzoc</strong>
-            <span>Cirugía — Chimaltenango</span>
-          </div>
-        </div>
-      </div>
-
+      <!-- Dots -->
+      <div id="tDots" style="display:flex;justify-content:center;gap:6px;margin-top:1.2rem;"></div>
     </div>
   </div>
 </section>
@@ -453,7 +462,7 @@
       <h2 style="color:white; margin-bottom:0.8rem;">¿Tienes una emergencia?</h2>
       <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem; font-size:1.1rem;">No esperes. Llama ahora — atendemos las 24 horas, los 7 días de la semana.</p>
       <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-        <a href="tel:32974228" class="btn btn-red btn-lg">☎️ 5121-9282</a>
+        <a href="tel:32974228" class="btn btn-red btn-lg">☎️ 3297-4228</a>
         <a href="https://wa.me/50232974228" target="_blank" class="btn btn-outline btn-lg">💬 WhatsApp 3297-4228</a>
       </div>
     </div>
@@ -479,7 +488,7 @@
         </div>
         <div class="contact-item">
           <div class="contact-icon">☎️</div>
-          <div class="contact-info"><label>Teléfono</label><strong><a href="tel:32974228" style="color:var(--blue);">5121-9282</a></strong></div>
+          <div class="contact-info"><label>Teléfono</label><strong><a href="tel:32974228" style="color:var(--blue);">3297-4228</a></strong></div>
         </div>
         <div class="contact-item">
           <div class="contact-icon">💬</div>
