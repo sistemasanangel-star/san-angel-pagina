@@ -6,10 +6,17 @@ const HOSPITAL_SYSTEM_PROMPT = `Eres el asistente virtual del Hospital San Ánge
 
 Responde siempre en español, de forma amable, clara y concisa. Usa emojis moderadamente. No uses markdown con asteriscos, usa HTML simple si necesitas negritas (<strong>texto</strong>). Saltos de línea con \n.
 
+⚠️ REGLA ABSOLUTA — MÉDICOS REFERENTES:
+Si alguien pregunta sobre médicos referentes, comisiones, referir pacientes o convenios médicos, SOLO responde esto exactamente:
+"Para información sobre el programa de médicos referentes, comuníquese directamente con nuestra visitadora médica:\n📱 <strong>5121-9282</strong> (llamadas y WhatsApp)"
+NO des ningún precio, comisión, ni detalle adicional. Nada más.
+
+⚠️ REGLA ABSOLUTA — TELÉFONOS:
+El número 5121-9282 NUNCA debe aparecer en ninguna otra respuesta que no sea sobre médicos referentes. Para cualquier otra consulta usa ÚNICAMENTE: 3297-4228 y 3994-4181.
+
 INFORMACIÓN DEL HOSPITAL:
 
-TELÉFONOS:
-- Visitadora médica: 5121-9282
+TELÉFONOS GENERALES:
 - Emergencias: 3297-4228 / 3994-4181
 - WhatsApp: 3297-4228
 - Correo: sanatoriosanangel@gmail.com
@@ -23,17 +30,17 @@ SERVICIOS GENERALES:
 - Parqueo gratuito 24h
 
 PROCEDIMIENTOS QUIRÚRGICOS Y PRECIOS (precio al paciente):
-- Histerectomía: Q6,800 | Comisión referente: Q600
-- Apendicectomía: Q6,800 | Comisión referente: Q550
-- Hernioplastia: Q6,800 | Comisión referente: Q650
-- Colecistectomía sin video: Q7,000 | Comisión referente: Q700
-- Colecistectomía con video (laparoscópica): Q12,500 | Comisión referente: Q800
-- Próstata con video: Q12,500 | Comisión referente: Q800
-- Próstata sin video: Q9,500 | Comisión referente: Q700
-- Cesárea: Q6,800 | Comisión referente: Q650
-- Parto vaginal: Q3,800 | Comisión referente: Q480
-- Legrado: Q3,800 | Comisión referente: Q450
-- AMEU: Q3,500 | Comisión referente: Q350
+- Histerectomía: Q6,800
+- Apendicectomía: Q6,800
+- Hernioplastia: Q6,800
+- Colecistectomía sin video: Q7,000
+- Colecistectomía con video (laparoscópica): Q12,500
+- Próstata con video: Q12,500
+- Próstata sin video: Q9,500
+- Cesárea: Q6,800
+- Parto vaginal: Q3,800
+- Legrado: Q3,800
+- AMEU: Q3,500
 
 TODOS LOS PAQUETES INCLUYEN:
 - Laboratorios pre-operatorios básicos (Hematología, BUN, Creatinina, Glucosa)
@@ -48,7 +55,7 @@ COSTOS ADICIONALES:
 - Exámenes adicionales a los pre-operatorios básicos tienen costo extra
 - Complicaciones: costo adicional con autorización previa del paciente
 
-Si no sabes algo específico, invita a contactar a los números de emergencia: 3297-4228 o 3994-4181. No inventes precios ni información que no esté aquí.`;
+Si no sabes algo específico, invita a contactar: 3297-4228 o 3994-4181. No inventes precios ni información que no esté aquí.`;
 
 // ─── MOTOR DEL CHATBOT CON IA ───
 class HospitalChatbot {
@@ -101,6 +108,36 @@ class HospitalChatbot {
     this.window.classList.remove('open');
   }
 
+  async callAI(messages) {
+    const models = [
+      'stepfun/step-3.5-flash:free',
+      'nvidia/nemotron-3-super-120b-a12b:free',
+      'arcee-ai/trinity-large-preview:free',
+      'meta-llama/llama-3.3-70b-instruct:free',
+    ];
+
+    const tryModel = async (model) => {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer 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`,
+          'HTTP-Referer': window.location.origin,
+          'X-Title': 'Hospital San Angel'
+        },
+        body: JSON.stringify({ model, messages })
+      });
+      const data = await response.json();
+      if (response.ok && data.choices?.[0]?.message?.content) {
+        return data.choices[0].message.content;
+      }
+      throw new Error(`${model} falló`);
+    };
+
+    // Lanza todos en paralelo, devuelve el primero que responda bien
+    return Promise.any(models.map(m => tryModel(m))).catch(() => null);
+  }
+
   async sendMessage() {
     if (this.isLoading) return;
     const text = this.inputEl.value.trim();
@@ -117,39 +154,21 @@ class HospitalChatbot {
     this.showTyping();
 
     try {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${window.OPENROUTER_API_KEY || ''}`,
-          'HTTP-Referer': window.location.origin,
-          'X-Title': 'Hospital San Angel'
-        },
-        body: JSON.stringify({
-          model: 'openrouter/auto',
-          messages: [
-            { role: 'system', content: HOSPITAL_SYSTEM_PROMPT },
-            ...this.conversationHistory
-          ]
-        })
-      });
+      const messages = [
+        { role: 'system', content: HOSPITAL_SYSTEM_PROMPT },
+        ...this.conversationHistory
+      ];
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        console.error('OpenRouter error:', JSON.stringify(data));
-        const errMsg = data.error?.message || `Error ${response.status}`;
-        this.hideTyping();
-        this.addMessage(`⚠️ ${errMsg}\n\nContáctanos: 📞 <strong>5121-9282</strong>`, 'bot');
-        return;
-      }
-
-      const reply = data.choices?.[0]?.message?.content || 'Lo siento, hubo un problema. Por favor llama al 📞 5121-9282.';
-
-      this.conversationHistory.push({ role: 'assistant', content: reply });
+      const reply = await this.callAI(messages);
 
       this.hideTyping();
-      this.addMessage(reply, 'bot');
+
+      if (reply) {
+        this.conversationHistory.push({ role: 'assistant', content: reply });
+        this.addMessage(reply, 'bot');
+      } else {
+        this.addMessage('En este momento hay mucha demanda. Por favor contáctanos:\n📞 <strong>3297-4228</strong> | <strong>3994-4181</strong>', 'bot');
+      }
     } catch (err) {
       console.error('Fetch error:', err);
       this.hideTyping();
