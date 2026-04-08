@@ -1,0 +1,1 @@
+window.OPENROUTER_API_KEY = "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";

@@ -1,95 +1,61 @@
 // ═══════════════════════════════════════════════
-//  HOSPITAL SAN ÁNGEL — CHATBOT ENGINE
-//  Base de conocimiento editable por el equipo
+//  HOSPITAL SAN ÁNGEL — CHATBOT CON IA (Claude)
 // ═══════════════════════════════════════════════
 
-const KNOWLEDGE_BASE = [
-  {
-    patterns: ["hola", "buenos", "buenas", "hi", "saludos", "hey"],
-    response: "¡Hola! 👋 Soy el asistente del <strong>Hospital San Ángel</strong>. Puedo darte información sobre precios y servicios.\n\n¿Sobre qué procedimiento quieres saber?"
-  },
-  {
-    patterns: ["histerectomia", "histerectomía", "utero", "útero", "uterina"],
-    response: "🔹 <strong>Histerectomía</strong>\nExtirpación del útero. Cirugía ginecológica mayor.\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["apendice", "apéndice", "apendicectomia", "apendicectomía"],
-    response: "🔹 <strong>Apendicectomía</strong>\nExtirpación del apéndice. Disponible como urgencia las 24h.\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["hernia", "hernioplastia"],
-    response: "🔹 <strong>Hernioplastia</strong>\nReparación quirúrgica de hernias abdominales e inguinales.\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["colecistecomia", "colecistectomia", "colecistectomía", "vesicula", "vesícula", "laparoscopia", "laparoscopica", "laparoscópica"],
-    response: "🔹 <strong>Colecistectomía</strong>\nExtirpación de la vesícula biliar.\n\n💰 Sin video: <strong>Q8,600</strong>\n💰 Con video (laparoscópica): <strong>Q13,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["prostata", "próstata"],
-    response: "🔹 <strong>Cirugía de Próstata</strong>\nTratamiento quirúrgico de la próstata.\n\n💰 Con video: <strong>Q13,500</strong>\n💰 Abierta: <strong>Q9,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["cesarea", "cesárea"],
-    response: "🔹 <strong>Cesárea</strong>\nParto quirúrgico programado o de urgencia, disponible las 24h.\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, atención al bebé y enfermería 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["parto", "dar a luz", "nacimiento", "labor"],
-    response: "🔹 <strong>Parto Vaginal</strong>\nAtención del parto natural con personal especializado las 24h.\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ Incluye: sala de partos, encamamiento y alimentación, medicamentos básicos, atención al bebé y enfermería 24h.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["legrado"],
-    response: "🔹 <strong>Legrado</strong>\nProcedimiento ginecológico de limpieza uterina.\n\n💰 Precio: <strong>Q6,500</strong>\n\n✅ Incluye: sala de operaciones, encamamiento y alimentación, y atención médica.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["ameu", "aspiracion", "aspiración", "endouterina"],
-    response: "🔹 <strong>AMEU</strong>\nAspiración Manual Endouterina — procedimiento ginecológico menor.\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ Incluye: sala de operaciones, encamamiento y alimentación, y atención médica.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["precio", "precios", "costo", "cuanto", "cuánto", "tarifa", "cobran", "procedimiento", "procedimientos", "cirugia", "cirugía", "lista", "todos"],
-    response: "💰 <strong>Precios de procedimientos:</strong>\n\n🔹 Histerectomía — Q8,500\n🔹 Apendicectomía — Q7,500\n🔹 Hernioplastia — Q8,500\n🔹 Colecistectomía — Q8,600\n🔹 Colecistectomía laparoscópica — Q13,500\n🔹 Próstata con video — Q13,500\n🔹 Próstata abierta — Q9,500\n🔹 Cesárea — Q7,500\n🔹 Parto — Q4,500\n🔹 Legrado — Q6,500\n🔹 AMEU — Q4,500\n\n👆 Escribe el nombre del procedimiento para ver más detalles."
-  },
-  {
-    patterns: ["horario", "hora", "abierto", "cuando", "atienden", "24"],
-    response: "🕐 Estamos abiertos <strong>las 24 horas, los 7 días</strong> incluyendo feriados."
-  },
-  {
-    patterns: ["donde", "dirección", "ubicación", "llegar", "mapa", "chimaltenango"],
-    response: "📍 <strong>4ta. Avenida 1-78, Zona 1, Chimaltenango</strong>\n\nParqueo propio disponible 24h sin costo. 🅿️"
-  },
-  {
-    patterns: ["emergencia", "urgencia", "urgente", "grave", "ayuda"],
-    response: "🚨 <strong>EMERGENCIAS:</strong>\n\n📞 <strong>3297-4228</strong>\n📞 <strong>3994-4181</strong>\n\nDisponibles las 24 horas."
-  },
-  {
-    patterns: ["ambulancia", "traslado"],
-    response: "🚑 Servicio de ambulancia disponible <strong>24 horas</strong>.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["laboratorio", "examen", "análisis", "analisis", "sangre"],
-    response: "🔬 Laboratorio clínico disponible <strong>24 horas</strong> con resultados rápidos y confiables.\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["intensivo", "uci", "neonatal", "pediatrico", "pediátrico"],
-    response: "🏥 <strong>Áreas Intensivas 24h:</strong>\n\n👨‍⚕️ Adultos — cubículos individuales\n👧 Pediátrico — atención especializada\n👶 Neonatal — incubadoras modernas\n\n📞 <strong>3297-4228</strong>"
-  },
-  {
-    patterns: ["habitacion", "habitación", "privada", "cuarto", "encamamiento"],
-    response: "🛏️ <strong>Habitaciones:</strong>\n\n• Semiprivada — incluida en todos los paquetes\n• Privada — Q850 adicionales por día\n• Encamamiento adicional — Q1,250/día"
-  },
-  {
-    patterns: ["gracias", "ok", "listo", "perfecto"],
-    response: "¡Con mucho gusto! 😊 Estamos disponibles las 24h. ¡Que estés bien!"
-  },
-];
+const HOSPITAL_SYSTEM_PROMPT = `Eres el asistente virtual del Hospital San Ángel, ubicado en 4ta. Avenida 1-78, Zona 1, Chimaltenango, Guatemala. Atiendes las 24 horas, los 7 días de la semana, incluyendo feriados.
 
-// ─── RESPUESTA POR DEFECTO ───
-const DEFAULT_RESPONSE = "No encontré información específica sobre eso, pero nuestro equipo puede ayudarte con todos los detalles. Contáctanos:\n\n• 📱 WhatsApp: 3297-4228\n• ☎️ Teléfono: 5121-9282\n• 📧 sanatoriosanangel@gmail.com\n\nAtendemos las <strong>24 horas</strong>, los 7 días de la semana. ¿Hay algo más en lo que pueda ayudarte?";
+Responde siempre en español, de forma amable, clara y concisa. Usa emojis moderadamente. No uses markdown con asteriscos, usa HTML simple si necesitas negritas (<strong>texto</strong>). Saltos de línea con \n.
 
-// ─── MOTOR DEL CHATBOT ───
+INFORMACIÓN DEL HOSPITAL:
+
+TELÉFONOS:
+- Visitadora médica: 5121-9282
+- Emergencias: 3297-4228 / 3994-4181
+- WhatsApp: 3297-4228
+- Correo: sanatoriosanangel@gmail.com
+
+SERVICIOS GENERALES:
+- UCI adultos, pediátrica y neonatal (24h)
+- Laboratorio clínico (24h)
+- Rayos X, ultrasonidos, tomografía, EKG
+- Ambulancia (24h)
+- Habitaciones semiprivadas (incluidas) y privadas (Q850/día adicional)
+- Parqueo gratuito 24h
+
+PROCEDIMIENTOS QUIRÚRGICOS Y PRECIOS (precio al paciente):
+- Histerectomía: Q6,800 | Comisión referente: Q600
+- Apendicectomía: Q6,800 | Comisión referente: Q550
+- Hernioplastia: Q6,800 | Comisión referente: Q650
+- Colecistectomía sin video: Q7,000 | Comisión referente: Q700
+- Colecistectomía con video (laparoscópica): Q12,500 | Comisión referente: Q800
+- Próstata con video: Q12,500 | Comisión referente: Q800
+- Próstata sin video: Q9,500 | Comisión referente: Q700
+- Cesárea: Q6,800 | Comisión referente: Q650
+- Parto vaginal: Q3,800 | Comisión referente: Q480
+- Legrado: Q3,800 | Comisión referente: Q450
+- AMEU: Q3,500 | Comisión referente: Q350
+
+TODOS LOS PAQUETES INCLUYEN:
+- Laboratorios pre-operatorios básicos (Hematología, BUN, Creatinina, Glucosa)
+- Sala de operaciones (hora y media)
+- Encamamiento semiprivado y alimentación (48h en cirugías mayores, 24h en menores)
+- Medicamentos y materiales básicos
+- Atención médica y enfermería 24h
+
+COSTOS ADICIONALES:
+- Habitación privada: Q850 por 24h
+- Kit de aseo personal: Q100
+- Exámenes adicionales a los pre-operatorios básicos tienen costo extra
+- Complicaciones: costo adicional con autorización previa del paciente
+
+Si no sabes algo específico, invita a contactar a los números de emergencia: 3297-4228 o 3994-4181. No inventes precios ni información que no esté aquí.`;
+
+// ─── MOTOR DEL CHATBOT CON IA ───
 class HospitalChatbot {
   constructor() {
     this.isOpen = false;
-    this.messageCount = 0;
+    this.conversationHistory = [];
+    this.isLoading = false;
     this.init();
   }
 
@@ -135,51 +101,63 @@ class HospitalChatbot {
     this.window.classList.remove('open');
   }
 
-  findResponse(userText) {
-    const lower = userText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
-    let bestMatch = null;
-    let bestScore = 0;
-
-    for (const entry of KNOWLEDGE_BASE) {
-      for (const pattern of entry.patterns) {
-        const np = pattern.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        if (lower.includes(np)) {
-          // Exact full-message match gets massive bonus
-          // Whole-word match gets bonus
-          // Otherwise score by length
-          let score = np.length;
-          if (lower === np) score += 1000;
-          else if (new RegExp('\\b' + np + '\\b').test(lower)) score += 100;
-          if (score > bestScore) {
-            bestScore = score;
-            bestMatch = entry.response;
-          }
-        }
-      }
-    }
-    return bestMatch || DEFAULT_RESPONSE;
-  }
-
-  sendMessage() {
-    let text = this.inputEl.value.trim();
+  async sendMessage() {
+    if (this.isLoading) return;
+    const text = this.inputEl.value.trim();
     if (!text) return;
-    // Strip common question prefixes so "¿Cuánto cuesta AMEU?" → "AMEU"
-    text = text.replace(/^[¿?]?cu[aá]nto cuesta\s+/i, '').trim();
-    text = text.replace(/^[¿?]?cu[aá]nto vale\s+/i, '').trim();
-    text = text.replace(/^[¿?]?precio de\s+/i, '').trim();
-    text = text.replace(/^[¿?]?qu[eé] incluye\s+/i, '').trim();
 
     this.addMessage(text, 'user');
     this.inputEl.value = '';
     this.inputEl.focus();
 
+    this.conversationHistory.push({ role: 'user', content: text });
+
+    this.isLoading = true;
+    this.sendBtn.disabled = true;
     this.showTyping();
-    const delay = 600 + Math.random() * 600;
-    setTimeout(() => {
+
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${window.OPENROUTER_API_KEY || ''}`,
+          'HTTP-Referer': window.location.origin,
+          'X-Title': 'Hospital San Angel'
+        },
+        body: JSON.stringify({
+          model: 'openrouter/auto',
+          messages: [
+            { role: 'system', content: HOSPITAL_SYSTEM_PROMPT },
+            ...this.conversationHistory
+          ]
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error('OpenRouter error:', JSON.stringify(data));
+        const errMsg = data.error?.message || `Error ${response.status}`;
+        this.hideTyping();
+        this.addMessage(`⚠️ ${errMsg}\n\nContáctanos: 📞 <strong>5121-9282</strong>`, 'bot');
+        return;
+      }
+
+      const reply = data.choices?.[0]?.message?.content || 'Lo siento, hubo un problema. Por favor llama al 📞 5121-9282.';
+
+      this.conversationHistory.push({ role: 'assistant', content: reply });
+
       this.hideTyping();
-      const response = this.findResponse(text);
-      this.addMessage(response, 'bot');
-    }, delay);
+      this.addMessage(reply, 'bot');
+    } catch (err) {
+      console.error('Fetch error:', err);
+      this.hideTyping();
+      this.addMessage('Hubo un problema de conexión. Por favor contáctanos directamente:\n📞 <strong>5121-9282</strong>', 'bot');
+    } finally {
+      this.isLoading = false;
+      this.sendBtn.disabled = false;
+    }
   }
 
   addMessage(text, sender) {

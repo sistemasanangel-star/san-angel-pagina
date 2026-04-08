@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestras Instalaciones – Hospital San Ángel Chimaltenango</title>
+  <meta name="description" content="Conoce las instalaciones del Hospital San Ángel: quirófanos, UCI, habitaciones privadas, laboratorio, sala de emergencias y más. Chimaltenango.">
+  <link rel="stylesheet" href="../css/main.css">
+  <style>
+    .facility-section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--gray-200);
+    }
+    .facility-section:last-child { border-bottom: none; }
+    .facility-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2rem; align-items: center;
+    }
+    .facility-grid.reverse .facility-text { order: 2; }
+    .facility-grid.reverse .facility-visual { order: 1; }
+    .facility-visual {
+      background: var(--gray-100);
+      border-radius: var(--radius-lg);
+      height: 300px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 1rem;
+      border: 1px solid var(--gray-200);
+      overflow: hidden;
+    }
+    .facility-icon { font-size: 4rem; }
+    .facility-label {
+      font-size: 0.85rem; color: var(--gray-500);
+      text-align: center; padding: 0 2rem;
+    }
+    @media (max-width: 768px) {
+      .facility-grid { grid-template-columns: 1fr; }
+      .facility-grid.reverse .facility-text { order: 1; }
+      .facility-grid.reverse .facility-visual { order: 2; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="header-root"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="../index.html">Inicio</a>
+      <span>›</span>
+      <span>Instalaciones</span>
+    </div>
+    <h1 class="fade-in">Nuestras Instalaciones</h1>
+    <p class="fade-in fade-in-delay-1">Infraestructura moderna y segura diseñada para tu comodidad y recuperación.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <!-- RECEPCIÓN -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Primer Contacto</span>
+          <h2 style="margin:0.8rem 0;">Recepción</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Atención dedicada a las necesidades de cada paciente. Nuestro equipo de recepción está disponible las 24 horas para orientarte y facilitar tu admisión de forma rápida y eficiente.</p>
+          <ul class="includes-list">
+            <li>Atención personalizada inmediata</li>
+            <li>Proceso de admisión ágil</li>
+            <li>Orientación completa sobre servicios</li>
+            <li>Personal bilingüe disponible</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🏢</div>
+          <p class="facility-label">Recepción principal · Hospital San Ángel</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SALA DE ESPERA -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid reverse">
+        <div class="facility-text">
+          <span class="section-label">Confort</span>
+          <h2 style="margin:0.8rem 0;">Sala de Espera</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Amplio espacio acogedor diseñado para que familiares y acompañantes esperen cómodamente. Fácil acceso para recibir la atención necesaria.</p>
+          <ul class="includes-list">
+            <li>Espacio amplio y ventilado</li>
+            <li>Asientos cómodos</li>
+            <li>Dispensador de agua</li>
+            <li>Señalización clara</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">💺</div>
+          <p class="facility-label">Sala de espera · Espacio acogedor</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARQUEO -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Acceso</span>
+          <h2 style="margin:0.8rem 0;">Parqueo</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Contamos con parqueo propio en las instalaciones para la comodidad de pacientes y familiares. Fácil acceso y salida.</p>
+          <ul class="includes-list">
+            <li>Parqueo disponible en las instalaciones</li>
+            <li>Acceso fácil y seguro</li>
+            <li>Disponible las 24 horas</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🅿️</div>
+          <p class="facility-label">Parqueo propio · Fácil acceso</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CLÍNICA Y EMERGENCIAS -->
+    <div class="facility-section fade-in" id="emergencias">
+      <div class="facility-grid reverse">
+        <div class="facility-text">
+          <span class="section-label">Atención 24/7</span>
+          <h2 style="margin:0.8rem 0;">Clínica y Emergencias</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Áreas equipadas con tecnología y personal capacitado para recibir todo tipo de emergencias médicas. Respuesta inmediata las 24 horas del día.</p>
+          <ul class="includes-list">
+            <li>Consultorios médicos equipados</li>
+            <li>Área de emergencias separada</li>
+            <li>Equipos de monitoreo</li>
+            <li>Personal médico especializado</li>
+            <li>Atención inmediata al llegar</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🚨</div>
+          <p class="facility-label">Área de emergencias · Atención inmediata 24h</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELEVADOR Y PASILLOS -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Accesibilidad</span>
+          <h2 style="margin:0.8rem 0;">Pasillos, Escaleras y Elevador</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Cada nivel cuenta con pasillos de amplio espacio, con escaleras físicas y un moderno elevador para traslados cómodos del paciente — incluyendo camillas y sillas de ruedas.</p>
+          <ul class="includes-list">
+            <li>Elevador para pacientes y camillas</li>
+            <li>Pasillos amplios en cada nivel</li>
+            <li>Escaleras de emergencia</li>
+            <li>Señalización de seguridad</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🛗</div>
+          <p class="facility-label">Elevador moderno · Pasillos amplios</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ESTACIÓN DE ENFERMERÍA -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid reverse">
+        <div class="facility-text">
+          <span class="section-label">Cuidado Continuo</span>
+          <h2 style="margin:0.8rem 0;">Estación de Enfermería</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Personal de enfermería capacitado, listo para brindar el mejor servicio con excelencia y trato humanizado. Disponibles en todo momento para atender las necesidades del paciente.</p>
+          <ul class="includes-list">
+            <li>Personal de enfermería 24/7</li>
+            <li>Estaciones en cada nivel</li>
+            <li>Atención personalizada</li>
+            <li>Seguimiento continuo al paciente</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">👩‍⚕️</div>
+          <p class="facility-label">Estación de enfermería · Personal especializado</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIRÓFANO -->
+    <div class="facility-section fade-in" id="quirofano">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Cirugía</span>
+          <h2 style="margin:0.8rem 0;">Quirófano y Sala de Recuperación</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Contamos con un área de quirófano completamente equipado para todo tipo de procedimientos quirúrgicos, incluyendo área de recuperación del paciente.</p>
+          <ul class="includes-list">
+            <li>Quirófano con equipo de última generación</li>
+            <li>Central de esterilización</li>
+            <li>Sala de recuperación post-operatoria</li>
+            <li>Área limpia y área de preparación</li>
+            <li>Electrocauterio y equipos especializados</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">⚕️</div>
+          <p class="facility-label">Quirófano equipado · Disponible 24 horas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN PRIVADA -->
+    <div class="facility-section fade-in" id="habitaciones">
+      <div class="facility-grid reverse">
+        <div class="facility-text">
+          <span class="section-label">Confort Premium</span>
+          <h2 style="margin:0.8rem 0;">Habitación Privada</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Dos niveles de habitaciones individuales con ambientes modernos y de fácil acceso para brindar los mejores cuidados durante la estadía.</p>
+          <ul class="includes-list">
+            <li>Baño privado</li>
+            <li>Ducha privada</li>
+            <li>Espacio amplio</li>
+            <li>Área abierta para visitas</li>
+            <li>Cama hospitalaria eléctrica</li>
+            <li>Pantalla de TV</li>
+            <li>Mesa de servicio alimentario</li>
+            <li>Sillones de descanso para acompañantes</li>
+          </ul>
+          <div class="notice-box" style="margin-top:1rem;">
+            <p>Costo adicional: <strong>Q850.00 por 24 horas</strong></p>
+          </div>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🛏️</div>
+          <p class="facility-label">Habitación privada con baño · Ambiente moderno</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- HABITACIÓN SEMIPRIVADA -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Confort Estándar</span>
+          <h2 style="margin:0.8rem 0;">Habitación Semiprivada</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Habitaciones cómodas con todos los elementos necesarios para una buena recuperación.</p>
+          <ul class="includes-list">
+            <li>Espacio amplio</li>
+            <li>Cama hospitalaria</li>
+            <li>Pantalla de TV</li>
+            <li>Mesa de servicio alimentario</li>
+            <li>Sillones de descanso</li>
+          </ul>
+          <div class="notice-box red" style="margin-top:1rem;">
+            <p>No incluye: baño ni ducha privada</p>
+          </div>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🛏️</div>
+          <p class="facility-label">Habitación semiprivada · Cómoda y accesible</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- UCI -->
+    <div class="facility-section fade-in" id="uci">
+      <div class="facility-grid reverse">
+        <div class="facility-text">
+          <span class="section-label">Cuidados Intensivos</span>
+          <h2 style="margin:0.8rem 0;">Áreas de UCI</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Un área para atender a pacientes con complicaciones severas de salud. Contamos con cubículos individuales y personal médico especializado para monitoreo constante las 24 horas.</p>
+          <ul class="includes-list">
+            <li>UCI Adultos — cubículos individuales</li>
+            <li>UCI Pediátrica — equipo especializado</li>
+            <li>UCI Neonatal — incubadoras y monitores</li>
+            <li>Personal especializado 24 horas</li>
+            <li>Monitoreo continuo de signos vitales</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🏥</div>
+          <p class="facility-label">UCI · Monitoreo constante 24 horas</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- COCINA Y COMEDOR -->
+    <div class="facility-section fade-in">
+      <div class="facility-grid">
+        <div class="facility-text">
+          <span class="section-label">Alimentación</span>
+          <h2 style="margin:0.8rem 0;">Cocina y Comedor</h2>
+          <p style="color:var(--gray-500); margin-bottom:1.2rem;">Contamos con un área amplia para la preparación de alimentos del paciente, incluyendo comedor para el consumo de alimentos de familiares.</p>
+          <ul class="includes-list">
+            <li>Cocina equipada para preparación de alimentos</li>
+            <li>Comedor para familiares</li>
+            <li>Alimentación incluida en procedimientos</li>
+          </ul>
+        </div>
+        <div class="facility-visual">
+          <div class="facility-icon">🍽️</div>
+          <p class="facility-label">Cocina y comedor · Alimentación incluida</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--navy); padding:4rem 0;">
+  <div class="container" style="text-align:center;">
+    <h2 style="color:white; margin-bottom:0.8rem;" class="fade-in">¿Quieres conocer nuestras instalaciones?</h2>
+    <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem;" class="fade-in">Contáctanos para más información o visítanos en Chimaltenango.</p>
+    <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-in">
+      <a href="tel:51219282" class="btn btn-red btn-lg">☎️ 5121-9282</a>
+      <a href="contacto.html" class="btn btn-outline btn-lg">📍 Ver ubicación</a>
+    </div>
+  </div>
+</section>
+
+<div id="footer-root"></div>
+<div id="chatbot-root"></div>
+
+<script src="../js/components.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  document.getElementById('header-root').innerHTML = renderHeader('instalaciones');
+  document.getElementById('footer-root').innerHTML = renderFooter(true);
+  document.getElementById('chatbot-root').innerHTML = renderChatbot();
+</script>
+</body>
+</html>

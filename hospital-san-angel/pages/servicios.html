@@ -85,7 +85,11 @@
         <h3>Habitaciones Privadas 24h</h3>
         <p>Habitaciones individuales modernas con baño privado, TV, cama hospitalaria y área de descanso para familiares.</p>
       </div>
-
+      <div class="card fade-in fade-in-delay-1">
+        <div class="card-icon">🛏️</div>
+        <h3>Habitaciones Semiprivadas 24h</h3>
+        <p>Habitaciones cómodas con espacio amplio, cama hospitalaria, TV y área de descanso. Sin baño privado.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -99,43 +103,21 @@
       <p class="section-desc">Para pacientes con complicaciones severas de salud. Cubículos individuales con personal médico especializado y monitoreo constante las 24 horas.</p>
     </div>
     <div class="cards-grid" style="grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));">
-
-      <div class="card fade-in" style="border-top: 4px solid var(--blue); padding:0; overflow:hidden;">
-        <div style="height:200px; overflow:hidden;">
-          <img src="../assets/fotos/intensivo-1.jpg" alt="Intensivo Adultos"
-               style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;"
-               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="margin-bottom:0.5rem;">🧑‍⚕️ Intensivo Adultos</h3>
-          <p>Cuidados intensivos para adultos con complicaciones médicas severas. Monitoreo constante y atención especializada las 24 horas.</p>
-        </div>
+      <div class="card fade-in" style="border-top: 4px solid var(--blue);">
+        <div class="card-icon">🧑‍⚕️</div>
+        <h3>UCI Adultos</h3>
+        <p>Cuidados intensivos para adultos con complicaciones médicas severas. Monitoreo constante y atención especializada las 24 horas.</p>
       </div>
-
-      <div class="card fade-in fade-in-delay-1" style="border-top: 4px solid var(--blue); padding:0; overflow:hidden;">
-        <div style="height:200px; overflow:hidden;">
-          <img src="../assets/fotos/intensivo-2.jpg" alt="Intensivo Pediátrico"
-               style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;"
-               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="margin-bottom:0.5rem;">👧 Intensivo Pediátrico</h3>
-          <p>Unidad especializada para niños que requieren cuidados intensivos. Personal médico pediátrico con experiencia y dedicación.</p>
-        </div>
+      <div class="card fade-in fade-in-delay-1" style="border-top: 4px solid var(--blue);">
+        <div class="card-icon">👧</div>
+        <h3>UCI Pediátrica</h3>
+        <p>Unidad especializada para niños que requieren cuidados intensivos. Personal médico pediátrico con experiencia y dedicación.</p>
       </div>
-
-      <div class="card fade-in fade-in-delay-2" style="border-top: 4px solid var(--blue); padding:0; overflow:hidden;">
-        <div style="height:200px; overflow:hidden;">
-          <img src="../assets/fotos/incuvadora-neonatal.jpg" alt="Intensivo Neonatal"
-               style="width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease;"
-               onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
-        </div>
-        <div style="padding:1.5rem;">
-          <h3 style="margin-bottom:0.5rem;">👶 Intensivo Neonatal</h3>
-          <p>Cuidados especializados para recién nacidos. Incubadoras y equipos de monitoreo avanzado disponibles las 24 horas.</p>
-        </div>
+      <div class="card fade-in fade-in-delay-2" style="border-top: 4px solid var(--blue);">
+        <div class="card-icon">👶</div>
+        <h3>UCI Neonatal</h3>
+        <p>Cuidados especializados para recién nacidos que requieren atención intensiva. Incubadoras y equipos de monitoreo avanzado.</p>
       </div>
-
     </div>
     <div class="notice-box fade-in" style="margin-top:2rem; max-width:700px; margin-left:auto; margin-right:auto;">
       <p>🕐 <strong>Monitoreo constante del paciente las 24 horas del día.</strong> Nuestro equipo está preparado para atender complicaciones severas de salud con cubículos individuales y personal especializado.</p>
@@ -194,7 +176,7 @@
     <h2 style="color:white; margin-bottom:0.8rem;" class="fade-in">¿Necesitas atención médica ahora?</h2>
     <p style="color:rgba(255,255,255,0.6); margin-bottom:2rem;" class="fade-in fade-in-delay-1">Estamos disponibles las 24 horas. No esperes — tu salud es nuestra prioridad.</p>
     <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="fade-in fade-in-delay-2">
-      <a href="tel:32974228" class="btn btn-red btn-lg">🚨 5121-9282</a>
+      <a href="tel:51219282" class="btn btn-red btn-lg">🚨 5121-9282</a>
       <a href="https://wa.me/50232974228" class="btn btn-outline btn-lg">💬 WhatsApp 3297-4228</a>
       <a href="contacto.html" class="btn btn-primary btn-lg">Ver ubicación</a>
     </div>
@@ -205,7 +187,6 @@
 <div id="chatbot-root"></div>
 
 <script src="../js/components.js"></script>
-<script src="../js/config.js"></script>
 <script src="../js/main.js"></script>
 <script>
   document.getElementById('header-root').innerHTML = renderHeader('servicios');
