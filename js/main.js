@@ -6,79 +6,79 @@
 const KNOWLEDGE_BASE = [
   {
     patterns: ["hola", "buenos", "buenas", "hi", "saludos", "hey"],
-    response: "¡Hola! 👋 Soy el asistente del <strong>Hospital San Ángel</strong>. Puedo darte información sobre precios, servicios y más.\n\n¿Sobre qué procedimiento quieres saber el precio?"
+    response: "¡Hola! 👋 Soy el asistente del <strong>Hospital San Ángel</strong>. Puedo darte información sobre precios y servicios.\n\n¿Sobre qué procedimiento quieres saber?"
   },
   {
     patterns: ["histerectomia", "histerectomía", "utero", "útero", "uterina"],
-    response: "🔹 <strong>Histerectomía</strong>\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico (Ceftriaxona) + Analgésico (Diclofenaco)\n• Soluciones intravenosas + Sonda Foley\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n¿Deseas agendar o tienes más preguntas? 📞 <strong>3297-4228</strong>"
+    response: "🔹 <strong>Histerectomía</strong>\nExtirpación del útero. Cirugía ginecológica mayor.\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["apendice", "apéndice", "apendicectomia", "apendicectomía"],
-    response: "🔹 <strong>Apendicectomía</strong>\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico (Ceftriaxona) + Analgésico (Diclofenaco)\n• Soluciones intravenosas\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n⚡ Disponible como urgencia las 24h. Llama al <strong>3297-4228</strong>"
+    response: "🔹 <strong>Apendicectomía</strong>\nExtirpación del apéndice. Disponible como urgencia las 24h.\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["hernia", "hernioplastia"],
-    response: "🔹 <strong>Hernioplastia</strong>\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios básicos\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Materiales de sutura y desechables\n• Atención médica y enfermería 24h\n\n¿Quieres más información? 📞 <strong>3297-4228</strong>"
+    response: "🔹 <strong>Hernioplastia</strong>\nReparación quirúrgica de hernias abdominales e inguinales.\n\n💰 Precio: <strong>Q8,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["colecistecomia", "colecistectomia", "colecistectomía", "vesicula", "vesícula", "laparoscopia", "laparoscopica", "laparoscópica"],
-    response: "🔹 <strong>Colecistectomía</strong>\n\n💰 <strong>Sin video (abierta):</strong> Q8,600\n💰 <strong>Con video (laparoscópica):</strong> Q13,500\n\n✅ <strong>Incluye ambas:</strong>\n• Sala de operaciones equipada\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Materiales quirúrgicos\n• Drenaje de penrose\n\n¿Cuál te interesa? Llama al <strong>3297-4228</strong>"
+    response: "🔹 <strong>Colecistectomía</strong>\nExtirpación de la vesícula biliar.\n\n💰 Sin video: <strong>Q8,600</strong>\n💰 Con video (laparoscópica): <strong>Q13,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["prostata", "próstata"],
-    response: "🔹 <strong>Cirugía de Próstata</strong>\n\n💰 <strong>Con video:</strong> Q13,500\n💰 <strong>Abierta:</strong> Q9,500\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones equipada\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Antibiótico + Analgésico + Soluciones IV\n• Sonda Foley + Bolsa recolectora\n• Materiales quirúrgicos\n\n📞 Para más info: <strong>3297-4228</strong>"
+    response: "🔹 <strong>Cirugía de Próstata</strong>\nTratamiento quirúrgico de la próstata.\n\n💰 Con video: <strong>Q13,500</strong>\n💰 Abierta: <strong>Q9,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, materiales quirúrgicos y atención médica 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["cesarea", "cesárea"],
-    response: "🔹 <strong>Cesárea</strong>\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• Laboratorios pre-operatorios\n• 48h encamamiento y alimentación\n• Oxitocina + Antibiótico + Analgésico\n• Gotas de Cloranfernicol\n• Pañales adulto y pediátricos\n• Sonda Foley + Soluciones IV\n• Atención al bebé incluida\n\n🏥 Disponible las 24h. Llama al <strong>3297-4228</strong>"
+    response: "🔹 <strong>Cesárea</strong>\nParto quirúrgico programado o de urgencia, disponible las 24h.\n\n💰 Precio: <strong>Q7,500</strong>\n\n✅ Incluye: sala de operaciones, laboratorios pre-operatorios, encamamiento y alimentación, medicamentos básicos, atención al bebé y enfermería 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["parto", "dar a luz", "nacimiento", "labor"],
-    response: "🔹 <strong>Parto Vaginal</strong>\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de partos equipada\n• 24h encamamiento y alimentación\n• Oxitocina + Vitamina K\n• Gotas de Cloranfernicol\n• Pañales adulto y pediátricos\n• Sonda de aspiración\n• Atención al bebé incluida\n\n🏥 Disponible las 24h. Llama al <strong>3297-4228</strong>"
+    response: "🔹 <strong>Parto Vaginal</strong>\nAtención del parto natural con personal especializado las 24h.\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ Incluye: sala de partos, encamamiento y alimentación, medicamentos básicos, atención al bebé y enfermería 24h.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["legrado"],
-    response: "🔹 <strong>Legrado</strong>\n\n💰 Precio: <strong>Q6,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala de operaciones (hora y media)\n• 24h encamamiento y alimentación\n• Pañal para adulto\n• Atención médica y enfermería\n\n⚠️ Medicamentos tienen costo adicional.\n📞 Info: <strong>3297-4228</strong>"
+    response: "🔹 <strong>Legrado</strong>\nProcedimiento ginecológico de limpieza uterina.\n\n💰 Precio: <strong>Q6,500</strong>\n\n✅ Incluye: sala de operaciones, encamamiento y alimentación, y atención médica.\n\n📞 <strong>3297-4228</strong>"
   },
   {
-    patterns: ["ameu"],
-    response: "🔹 <strong>AMEU</strong>\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ <strong>Incluye:</strong>\n• Sala equipada (hora y media)\n• 12 a 18h encamamiento y alimentación\n• Pañal para adulto\n• Atención médica y enfermería\n\n⚠️ Medicamentos tienen costo adicional.\n📞 Info: <strong>3297-4228</strong>"
+    patterns: ["ameu", "aspiracion", "aspiración", "endouterina"],
+    response: "🔹 <strong>AMEU</strong>\nAspiración Manual Endouterina — procedimiento ginecológico menor.\n\n💰 Precio: <strong>Q4,500</strong>\n\n✅ Incluye: sala de operaciones, encamamiento y alimentación, y atención médica.\n\n📞 <strong>3297-4228</strong>"
   },
   {
-    patterns: ["precio", "precios", "costo", "cuanto", "cuánto", "tarifa", "cobran", "procedimiento", "procedimientos", "cirugia", "cirugía"],
-    response: "💰 <strong>Precios de procedimientos:</strong>\n\n🔹 Histerectomía — Q8,500\n🔹 Apendicectomía — Q7,500\n🔹 Hernioplastia — Q8,500\n🔹 Colecistectomía — Q8,600\n🔹 Colecistectomía laparoscópica — Q13,500\n🔹 Próstata con video — Q13,500\n🔹 Próstata abierta — Q9,500\n🔹 Cesárea — Q7,500\n🔹 Parto — Q4,500\n🔹 Legrado — Q6,500\n🔹 AMEU — Q4,500\n\n👆 Escribe el nombre del procedimiento para ver <strong>qué incluye</strong> exactamente."
+    patterns: ["precio", "precios", "costo", "cuanto", "cuánto", "tarifa", "cobran", "procedimiento", "procedimientos", "cirugia", "cirugía", "lista", "todos"],
+    response: "💰 <strong>Precios de procedimientos:</strong>\n\n🔹 Histerectomía — Q8,500\n🔹 Apendicectomía — Q7,500\n🔹 Hernioplastia — Q8,500\n🔹 Colecistectomía — Q8,600\n🔹 Colecistectomía laparoscópica — Q13,500\n🔹 Próstata con video — Q13,500\n🔹 Próstata abierta — Q9,500\n🔹 Cesárea — Q7,500\n🔹 Parto — Q4,500\n🔹 Legrado — Q6,500\n🔹 AMEU — Q4,500\n\n👆 Escribe el nombre del procedimiento para ver más detalles."
   },
   {
     patterns: ["horario", "hora", "abierto", "cuando", "atienden", "24"],
-    response: "🕐 Estamos abiertos <strong>las 24 horas, los 7 días</strong> incluyendo feriados. Emergencias, laboratorio y quirófano siempre disponibles."
+    response: "🕐 Estamos abiertos <strong>las 24 horas, los 7 días</strong> incluyendo feriados."
   },
   {
     patterns: ["donde", "dirección", "ubicación", "llegar", "mapa", "chimaltenango"],
-    response: "📍 <strong>4ta. Avenida 1-78, Zona 1, Chimaltenango</strong>\n\nCerca del centro. Parqueo propio disponible 24h sin costo. 🅿️"
+    response: "📍 <strong>4ta. Avenida 1-78, Zona 1, Chimaltenango</strong>\n\nParqueo propio disponible 24h sin costo. 🅿️"
   },
   {
     patterns: ["emergencia", "urgencia", "urgente", "grave", "ayuda"],
-    response: "🚨 <strong>EMERGENCIAS — Llama ahora:</strong>\n\n📞 <strong>3297-4228</strong>\n📞 <strong>3994-4181</strong>\n\nDisponibles las 24 horas, los 7 días."
+    response: "🚨 <strong>EMERGENCIAS:</strong>\n\n📞 <strong>3297-4228</strong>\n📞 <strong>3994-4181</strong>\n\nDisponibles las 24 horas."
   },
   {
     patterns: ["ambulancia", "traslado"],
-    response: "🚑 Sí, tenemos ambulancia disponible <strong>24 horas</strong> para emergencias y traslados.\n\nLlama al <strong>3297-4228</strong> para solicitarla."
+    response: "🚑 Servicio de ambulancia disponible <strong>24 horas</strong>.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["laboratorio", "examen", "análisis", "analisis", "sangre"],
-    response: "🔬 Laboratorio clínico disponible <strong>24 horas</strong>.\n\nRealizamos: Hematología, Bioquímica, Hormonas, Microbiología, Marcadores tumorales y más. Resultados confiables y rápidos."
+    response: "🔬 Laboratorio clínico disponible <strong>24 horas</strong> con resultados rápidos y confiables.\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["intensivo", "uci", "neonatal", "pediatrico", "pediátrico"],
-    response: "🏥 <strong>Áreas Intensivas 24h:</strong>\n\n👨‍⚕️ Intensivo Adultos — cubículos individuales\n👧 Intensivo Pediátrico — atención especializada\n👶 Intensivo Neonatal — incubadoras modernas\n\nMonitoreo constante. Llama al <strong>3297-4228</strong>"
+    response: "🏥 <strong>Áreas Intensivas 24h:</strong>\n\n👨‍⚕️ Adultos — cubículos individuales\n👧 Pediátrico — atención especializada\n👶 Neonatal — incubadoras modernas\n\n📞 <strong>3297-4228</strong>"
   },
   {
     patterns: ["habitacion", "habitación", "privada", "cuarto", "encamamiento"],
-    response: "🛏️ <strong>Habitaciones:</strong>\n\n• Semiprivada — incluida en todos los paquetes\n• Privada — Q850 adicionales por día (baño, TV, área de visitas)\n• Encamamiento adicional — Q1,250 por día extra\n\n¿Tienes alguna otra pregunta?"
+    response: "🛏️ <strong>Habitaciones:</strong>\n\n• Semiprivada — incluida en todos los paquetes\n• Privada — Q850 adicionales por día\n• Encamamiento adicional — Q1,250/día"
   },
   {
     patterns: ["gracias", "ok", "listo", "perfecto"],
-    response: "¡Con mucho gusto! 😊 Cualquier otra duda estamos aquí las 24h. ¡Que estés bien!"
+    response: "¡Con mucho gusto! 😊 Estamos disponibles las 24h. ¡Que estés bien!"
   },
 ];
 
@@ -136,15 +136,20 @@ class HospitalChatbot {
   }
 
   findResponse(userText) {
-    const lower = userText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    const lower = userText.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").trim();
     let bestMatch = null;
     let bestScore = 0;
 
     for (const entry of KNOWLEDGE_BASE) {
       for (const pattern of entry.patterns) {
-        const normalizedPattern = pattern.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-        if (lower.includes(normalizedPattern)) {
-          const score = normalizedPattern.length;
+        const np = pattern.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        if (lower.includes(np)) {
+          // Exact full-message match gets massive bonus
+          // Whole-word match gets bonus
+          // Otherwise score by length
+          let score = np.length;
+          if (lower === np) score += 1000;
+          else if (new RegExp('\\b' + np + '\\b').test(lower)) score += 100;
           if (score > bestScore) {
             bestScore = score;
             bestMatch = entry.response;
@@ -156,8 +161,13 @@ class HospitalChatbot {
   }
 
   sendMessage() {
-    const text = this.inputEl.value.trim();
+    let text = this.inputEl.value.trim();
     if (!text) return;
+    // Strip common question prefixes so "¿Cuánto cuesta AMEU?" → "AMEU"
+    text = text.replace(/^[¿?]?cu[aá]nto cuesta\s+/i, '').trim();
+    text = text.replace(/^[¿?]?cu[aá]nto vale\s+/i, '').trim();
+    text = text.replace(/^[¿?]?precio de\s+/i, '').trim();
+    text = text.replace(/^[¿?]?qu[eé] incluye\s+/i, '').trim();
 
     this.addMessage(text, 'user');
     this.inputEl.value = '';
