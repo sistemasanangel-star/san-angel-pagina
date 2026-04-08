@@ -109,33 +109,14 @@ class HospitalChatbot {
   }
 
   async callAI(messages) {
-    const models = [
-      'stepfun/step-3.5-flash:free',
-      'nvidia/nemotron-3-super-120b-a12b:free',
-      'arcee-ai/trinity-large-preview:free',
-      'meta-llama/llama-3.3-70b-instruct:free',
-    ];
-
-    const tryModel = async (model) => {
-      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer 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`,
-          'HTTP-Referer': window.location.origin,
-          'X-Title': 'Hospital San Angel'
-        },
-        body: JSON.stringify({ model, messages })
-      });
-      const data = await response.json();
-      if (response.ok && data.choices?.[0]?.message?.content) {
-        return data.choices[0].message.content;
-      }
-      throw new Error(`${model} falló`);
-    };
-
-    // Lanza todos en paralelo, devuelve el primero que responda bien
-    return Promise.any(models.map(m => tryModel(m))).catch(() => null);
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages })
+    });
+    if (!response.ok) return null;
+    const data = await response.json();
+    return data.reply || null;
   }
 
   async sendMessage() {
