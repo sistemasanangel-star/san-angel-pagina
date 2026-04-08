@@ -1096,7 +1096,7 @@ a  { text-decoration: none; color: inherit; }
 
   /* Foto: centrar el personal horizontalmente */
   .hero > div:first-child img {
-    object-position: 45% 75% !important;
+    object-position: 44% 75% !important;
     opacity: 0.7 !important;
   }
   /* Overlay: oscuro SOLO en la franja superior (donde va el texto),
