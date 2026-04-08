@@ -1094,9 +1094,9 @@ a  { text-decoration: none; color: inherit; }
      HERO MÓVIL — TEXTO ARRIBA COMPACTO, PERSONAL VISIBLE
      ══════════════════════════════════════════════════════ */
 
-  /* Foto: mostrar la parte BAJA donde está el personal */
+  /* Foto: centrar el personal horizontalmente */
   .hero > div:first-child img {
-    object-position: center bottom !important;
+    object-position: 45% 75% !important;
     opacity: 0.7 !important;
   }
   /* Overlay: oscuro SOLO en la franja superior (donde va el texto),

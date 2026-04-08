@@ -196,24 +196,25 @@
       .lock-left-bg {
         position: absolute !important;
         inset: 0 !important;
-        filter: brightness(0.45) !important;
-        background-position: center 45% !important;
+        filter: brightness(0.65) !important;
+        background-position: center 40% !important;
       }
       .lock-left-overlay {
         position: absolute !important;
         inset: 0 !important;
         background: linear-gradient(180deg,
-          rgba(11,21,38,0.0) 0%,
-          rgba(11,21,38,0.0) 30%,
-          rgba(11,21,38,0.65) 62%,
-          rgba(11,21,38,0.97) 88%,
+          rgba(11,21,38,0.3) 0%,
+          rgba(11,21,38,0.1) 20%,
+          rgba(11,21,38,0.1) 45%,
+          rgba(11,21,38,0.7) 68%,
+          rgba(11,21,38,0.97) 85%,
           rgba(11,21,38,1.0) 100%) !important;
       }
       /* El contenido es relativo y empuja la foto */
       .lock-left-content {
         position: relative !important;
         z-index: 2 !important;
-        padding: 5rem 1.5rem 2.2rem !important;
+        padding: 5rem 1.5rem 2rem !important;
         height: auto !important;
         display: flex !important;
         flex-direction: column !important;
@@ -235,27 +236,35 @@
       /* Wrapper del contenido inferior */
       .lock-left-content-bottom { display: flex !important; flex-direction: column !important; }
 
-      /* Badge */
-      .lock-badge { margin-bottom: 0.7rem; padding: 5px 15px; display: inline-flex !important; width: fit-content; }
-      .lock-badge span { font-size: 0.67rem; }
+      /* Badge más llamativo */
+      .lock-badge {
+        margin-bottom: 0.8rem !important;
+        padding: 6px 16px !important;
+        display: inline-flex !important;
+        width: fit-content !important;
+        background: rgba(201,168,76,0.25) !important;
+        border: 1px solid rgba(201,168,76,0.6) !important;
+      }
+      .lock-badge span { font-size: 0.68rem !important; letter-spacing: 0.12em !important; }
 
-      /* Título completo como en PC */
+      /* Título grande e impactante */
       .lock-left-content h1 {
-        font-size: 2.4rem !important;
+        font-size: 2.5rem !important;
         color: white !important;
-        margin-bottom: 0.7rem !important;
-        line-height: 1.1 !important;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.8) !important;
+        margin-bottom: 0.6rem !important;
+        line-height: 1.05 !important;
+        text-shadow: 0 2px 24px rgba(0,0,0,0.9) !important;
       }
 
-      /* Descripción completa */
+      /* Descripción */
       .lock-left-content-bottom > p {
-        font-size: 0.96rem !important;
+        font-size: 0.95rem !important;
         line-height: 1.7 !important;
-        color: rgba(255,255,255,0.75) !important;
-        margin-bottom: 1.5rem !important;
+        color: rgba(255,255,255,0.8) !important;
+        margin-bottom: 1.3rem !important;
         display: block !important;
         max-width: 100% !important;
+        text-shadow: 0 1px 8px rgba(0,0,0,0.6) !important;
       }
 
       /* Beneficios: misma estructura que PC */
@@ -271,14 +280,15 @@
         flex-direction: row !important;
         align-items: flex-start !important;
         text-align: left !important;
-        padding: 1rem 1.1rem !important;
+        padding: 0.85rem 1rem !important;
         min-width: unset !important;
         max-width: unset !important;
         background: rgba(255,255,255,0.07) !important;
-        border: 1px solid rgba(201,168,76,0.2) !important;
+        border: 1px solid rgba(201,168,76,0.25) !important;
+        border-left: 3px solid rgba(201,168,76,0.6) !important;
         border-radius: 10px !important;
-        gap: 14px !important;
-        backdrop-filter: blur(8px) !important;
+        gap: 12px !important;
+        backdrop-filter: blur(6px) !important;
       }
       .lock-benefit-icon {
         width: 38px !important;
@@ -307,14 +317,16 @@
       /* Botones de contacto */
       .lock-contact-row {
         display: flex !important;
-        gap: 0.75rem !important;
+        gap: 0.7rem !important;
         flex-wrap: nowrap !important;
+        margin-top: 0.3rem !important;
       }
       .lock-contact-row .btn {
         flex: 1 !important;
         justify-content: center !important;
-        font-size: 0.86rem !important;
-        padding: 0.7rem 1rem !important;
+        font-size: 0.88rem !important;
+        padding: 0.8rem 1rem !important;
+        font-weight: 700 !important;
       }
 
       /* Panel derecho: fondo crema, login grande */
