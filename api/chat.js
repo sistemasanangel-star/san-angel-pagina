@@ -10,17 +10,16 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
-  // Modelos gratuitos activos en OpenRouter (abril 2026), ordenados por velocidad
   const models = [
-    'google/gemini-2.0-flash-lite:free',             // Más rápido, TTFT bajo
-    'google/gemma-3-4b-it:free',                     // Pequeño y rápido
-    'mistralai/mistral-small-3.1-24b-instruct:free', // Mistral gratis
-    'meta-llama/llama-3.3-70b-instruct:free',        // Fallback confiable
+    'google/gemini-2.0-flash-lite:free',
+    'google/gemma-3-4b-it:free',
+    'mistralai/mistral-small-3.1-24b-instruct:free',
+    'meta-llama/llama-3.3-70b-instruct:free',
   ];
 
   const tryModel = async (model) => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000); // 8s max
+    const timeout = setTimeout(() => controller.abort(), 8000);
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -44,16 +43,23 @@ export default async function handler(req, res) {
       if (response.ok && data.choices?.[0]?.message?.content) {
         return data.choices[0].message.content;
       }
-      throw new Error(`${model} failed`);
+      // Devolver error detallado para debug
+      throw new Error(JSON.stringify(data));
     } finally {
       clearTimeout(timeout);
     }
   };
 
-  try {
-    const reply = await Promise.any(models.map(m => tryModel(m)));
-    return res.status(200).json({ reply });
-  } catch (err) {
-    return res.status(502).json({ error: 'All models failed' });
+  const errors = [];
+  for (const model of models) {
+    try {
+      const reply = await tryModel(model);
+      return res.status(200).json({ reply });
+    } catch (err) {
+      errors.push({ model, error: err.message });
+    }
   }
+
+  // Devolver todos los errores para saber qué falló
+  return res.status(502).json({ error: 'All models failed', details: errors });
 }
