@@ -10,29 +10,44 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
+  // Modelos ordenados por velocidad (los más rápidos primero)
   const models = [
-    'stepfun/step-3.5-flash:free',
-    'nvidia/nemotron-3-super-120b-a12b:free',
-    'arcee-ai/trinity-large-preview:free',
-    'meta-llama/llama-3.3-70b-instruct:free',
+    'google/gemini-flash-1.5:free',          // ~1-2s, muy rápido
+    'mistralai/mistral-7b-instruct:free',    // ~2-3s, rápido
+    'meta-llama/llama-3.1-8b-instruct:free', // ~2-3s, rápido
+    'meta-llama/llama-3.3-70b-instruct:free', // fallback
   ];
 
   const tryModel = async (model) => {
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': req.headers.origin || 'https://hospitalsanangelgt.com',
-        'X-Title': 'Hospital San Angel'
-      },
-      body: JSON.stringify({ model, messages })
-    });
-    const data = await response.json();
-    if (response.ok && data.choices?.[0]?.message?.content) {
-      return data.choices[0].message.content;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 8000); // 8s max por modelo
+
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': req.headers.origin || 'https://hospitalsanangelgt.com',
+          'X-Title': 'Hospital San Angel'
+        },
+        body: JSON.stringify({
+          model,
+          messages,
+          max_tokens: 400,   // Respuestas más cortas = más rápido
+          temperature: 0.3,  // Menos aleatoriedad = más consistente
+        }),
+        signal: controller.signal
+      });
+
+      const data = await response.json();
+      if (response.ok && data.choices?.[0]?.message?.content) {
+        return data.choices[0].message.content;
+      }
+      throw new Error(`${model} failed`);
+    } finally {
+      clearTimeout(timeout);
     }
-    throw new Error(`${model} failed`);
   };
 
   try {
