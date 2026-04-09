@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         'X-Title': 'Hospital San Angel'
       },
       body: JSON.stringify({
-        model: 'google/gemini-2.5-flash-lite',  // $0.000075 por mensaje, muy rápido
+        model: 'google/gemma-3-4b-it',  // ~10x más barato que Gemini 2.5 Flash Lite
         messages,
         max_tokens: 400,
         temperature: 0.3,
