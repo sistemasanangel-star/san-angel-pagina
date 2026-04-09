@@ -10,18 +10,18 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
-  // Modelos válidos abril 2026 + router automático como respaldo
   const models = [
-    'openrouter/free',                        // Router automático
-    'google/gemma-3-27b-it:free',             // Gemma 3 27B gratis
-    'meta-llama/llama-3.3-70b-instruct:free', // Llama 70B gratis
-    'mistralai/mistral-small-3.1-24b-instruct:free', // Mistral gratis
+    'openrouter/free',
+    'google/gemma-3-27b-it:free',
+    'meta-llama/llama-3.3-70b-instruct:free',
+    'mistralai/mistral-small-3.1-24b-instruct:free',
   ];
+
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
   const tryModel = async (model) => {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
-
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
@@ -31,15 +31,9 @@ export default async function handler(req, res) {
           'HTTP-Referer': req.headers.origin || 'https://hospitalsanangelgt.com',
           'X-Title': 'Hospital San Angel'
         },
-        body: JSON.stringify({
-          model,
-          messages,
-          max_tokens: 400,
-          temperature: 0.3,
-        }),
+        body: JSON.stringify({ model, messages, max_tokens: 400, temperature: 0.3 }),
         signal: controller.signal
       });
-
       const data = await response.json();
       if (response.ok && data.choices?.[0]?.message?.content) {
         return data.choices[0].message.content;
@@ -50,10 +44,15 @@ export default async function handler(req, res) {
     }
   };
 
-  try {
-    const reply = await Promise.any(models.map(m => tryModel(m)));
-    return res.status(200).json({ reply });
-  } catch (err) {
-    return res.status(502).json({ error: 'All models failed' });
+  // 3 intentos con pausa de 2s entre cada uno
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const reply = await Promise.any(models.map(m => tryModel(m)));
+      return res.status(200).json({ reply });
+    } catch {
+      if (attempt < 2) await sleep(2000);
+    }
   }
+
+  return res.status(502).json({ error: 'All models failed' });
 }
