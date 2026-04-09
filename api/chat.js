@@ -11,10 +11,10 @@ export default async function handler(req, res) {
   const { messages } = req.body;
 
   const models = [
+    'google/gemini-2.5-flash-lite:free',
     'openrouter/free',
     'google/gemma-3-27b-it:free',
     'meta-llama/llama-3.3-70b-instruct:free',
-    'mistralai/mistral-small-3.1-24b-instruct:free',
   ];
 
   const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -44,7 +44,6 @@ export default async function handler(req, res) {
     }
   };
 
-  // 3 intentos con pausa de 2s entre cada uno
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       const reply = await Promise.any(models.map(m => tryModel(m)));
