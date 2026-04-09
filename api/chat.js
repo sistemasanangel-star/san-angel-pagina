@@ -10,36 +10,50 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
-  try {
+  // Modelos válidos abril 2026 + router automático como respaldo
+  const models = [
+    'openrouter/free',                        // Router automático
+    'google/gemma-3-27b-it:free',             // Gemma 3 27B gratis
+    'meta-llama/llama-3.3-70b-instruct:free', // Llama 70B gratis
+    'mistralai/mistral-small-3.1-24b-instruct:free', // Mistral gratis
+  ];
+
+  const tryModel = async (model) => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`,
-        'HTTP-Referer': req.headers.origin || 'https://hospitalsanangelgt.com',
-        'X-Title': 'Hospital San Angel'
-      },
-      body: JSON.stringify({
-        model: 'openrouter/free',  // Router automático - siempre elige un modelo gratis disponible
-        messages,
-        max_tokens: 400,
-        temperature: 0.3,
-      }),
-      signal: controller.signal
-    });
+    try {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': req.headers.origin || 'https://hospitalsanangelgt.com',
+          'X-Title': 'Hospital San Angel'
+        },
+        body: JSON.stringify({
+          model,
+          messages,
+          max_tokens: 400,
+          temperature: 0.3,
+        }),
+        signal: controller.signal
+      });
 
-    clearTimeout(timeout);
-    const data = await response.json();
-
-    if (response.ok && data.choices?.[0]?.message?.content) {
-      return res.status(200).json({ reply: data.choices[0].message.content });
+      const data = await response.json();
+      if (response.ok && data.choices?.[0]?.message?.content) {
+        return data.choices[0].message.content;
+      }
+      throw new Error(`${model} failed`);
+    } finally {
+      clearTimeout(timeout);
     }
+  };
 
-    return res.status(502).json({ error: 'No reply', detail: data });
+  try {
+    const reply = await Promise.any(models.map(m => tryModel(m)));
+    return res.status(200).json({ reply });
   } catch (err) {
-    return res.status(502).json({ error: err.message });
+    return res.status(502).json({ error: 'All models failed' });
   }
 }
