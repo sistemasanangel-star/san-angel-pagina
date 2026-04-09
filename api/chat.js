@@ -10,17 +10,17 @@ export default async function handler(req, res) {
 
   const { messages } = req.body;
 
-  // Modelos ordenados por velocidad (los más rápidos primero)
+  // Modelos gratuitos activos en OpenRouter (abril 2026), ordenados por velocidad
   const models = [
-    'google/gemini-flash-1.5:free',          // ~1-2s, muy rápido
-    'mistralai/mistral-7b-instruct:free',    // ~2-3s, rápido
-    'meta-llama/llama-3.1-8b-instruct:free', // ~2-3s, rápido
-    'meta-llama/llama-3.3-70b-instruct:free', // fallback
+    'google/gemini-2.0-flash-lite:free',             // Más rápido, TTFT bajo
+    'google/gemma-3-4b-it:free',                     // Pequeño y rápido
+    'mistralai/mistral-small-3.1-24b-instruct:free', // Mistral gratis
+    'meta-llama/llama-3.3-70b-instruct:free',        // Fallback confiable
   ];
 
   const tryModel = async (model) => {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000); // 8s max por modelo
+    const timeout = setTimeout(() => controller.abort(), 8000); // 8s max
 
     try {
       const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -34,8 +34,8 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           model,
           messages,
-          max_tokens: 400,   // Respuestas más cortas = más rápido
-          temperature: 0.3,  // Menos aleatoriedad = más consistente
+          max_tokens: 400,
+          temperature: 0.3,
         }),
         signal: controller.signal
       });
