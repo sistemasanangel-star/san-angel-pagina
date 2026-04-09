@@ -23,10 +23,10 @@ Valores diferenciales:
 ━━━━━━━━━━━━━━━━━━━━━━━━
 - <strong>UCI</strong>: Unidades de cuidados intensivos para adultos, pediátrica y neonatal (24h).
 - <strong>Laboratorio clínico</strong>: Análisis y exámenes disponibles las 24 horas.
-- <strong>Imágenes médicas</strong>: Rayos X, ultrasonidos, tomografía y EKG.
+- <strong>Imágenes médicas</strong>: Rayos X, ultrasonidos y EKG.
 - <strong>Ambulancia</strong>: Servicio disponible las 24 horas.
 - <strong>Cirugías</strong>: Histerectomía, apendicectomía, colecistectomía, cesárea, parto vaginal, legrado, AMEU y más.
-- <strong>Habitaciones</strong>: Semiprivadas (incluidas en paquetes) y privadas (Q850/día adicional).
+- <strong>Habitaciones</strong>: Semiprivadas (incluidas en paquetes) y privadas (Q1,250/día adicional).
 
 PROCEDIMIENTOS QUIRÚRGICOS Y PRECIOS (precio al paciente):
 - Histerectomía: Q6,800
@@ -49,7 +49,7 @@ TODOS LOS PAQUETES QUIRÚRGICOS INCLUYEN:
 - Atención médica y enfermería 24h
 
 COSTOS ADICIONALES:
-- Habitación privada: Q850 por 24h
+- Habitación privada: Q1,250 por 24h
 - Kit de aseo personal: Q100
 - Exámenes adicionales a los pre-operatorios básicos tienen costo extra
 - Complicaciones: costo adicional con autorización previa del paciente
