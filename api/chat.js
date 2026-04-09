@@ -23,7 +23,7 @@ export default async function handler(req, res) {
         'X-Title': 'Hospital San Angel'
       },
       body: JSON.stringify({
-        model: 'meta-llama/llama-3.2-1b-instruct',
+        model: 'google/gemma-3-4b-it',
         messages,
         max_tokens: 400,
         temperature: 0.3,
