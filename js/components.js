@@ -39,6 +39,8 @@ function renderHeader(activePage = '') {
   <a href="procedimientos.html">Procedimientos</a>
   <a href="laboratorio.html">Laboratorio</a>
   <a href="instalaciones.html">Instalaciones</a>
+  <a href="recorrido.html">🎥 Conoce el Hospital</a>
+  <a href="referentes.html" style="color:var(--gold);">🔐 Médicos Referentes</a>
   <a href="contacto.html">Contáctanos</a>
   <a href="tel:32974228" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 3297-4228</a>
 </nav>
@@ -82,6 +84,7 @@ function renderHeaderHome(activePage = '') {
   <a href="pages/procedimientos.html">Procedimientos</a>
   <a href="pages/laboratorio.html">Laboratorio</a>
   <a href="pages/instalaciones.html">Instalaciones</a>
+  <a href="pages/recorrido.html">🎥 Conoce el Hospital</a>
   <a href="pages/referentes.html" style="color:var(--gold);">🔐 Médicos Referentes</a>
   <a href="pages/contacto.html">Contáctanos</a>
   <a href="tel:32974228" style="color: #ef5350; margin-top: 1rem;">🚨 Emergencias: 3297-4228</a>
