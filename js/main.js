@@ -51,8 +51,9 @@ CADA PROCEDIMIENTO INCLUYE:
 - Medicamentos básicos incluidos
 (La colecistectomía laparoscópica incluye además sala con laparoscopio. La cesárea incluye sala de operaciones y partos, atención de mamá y bebé.)
 
-⚠️ AVISO OBLIGATORIO DE PRECIOS: Cada vez que des un precio, SIEMPRE agrega al final de tu respuesta esta nota exacta:
-"<br><br><em>⚠️ Los precios pueden variar según cada paciente y caso clínico. Para confirmar el costo exacto de su procedimiento, comuníquese con nosotros: 📞 <strong>3297-4228</strong> / <strong>3994-4181</strong></em>"
+⚠️ AVISO DE PRECIOS EN PROCEDIMIENTOS: ÚNICAMENTE cuando el usuario pregunte específicamente por el precio, costo o información de un procedimiento quirúrgico (como histerectomía, apendicectomía, cesárea, hernioplastia, colecistectomía, etc.), agrega al final de tu respuesta esta nota exacta:
+"<br><br><em>⚠️ Los precios pueden variar según cada paciente y caso clínico. visita nuestras instalaciones para evaluar tu caso Para confirmar el costo exacto de su procedimiento 📞 <strong>3297-4228</strong> / <strong>3994-4181</strong></em>"
+NO agregues este aviso en respuestas sobre servicios generales, horarios, ubicación, consultas u otros temas que no sean procedimientos quirúrgicos con precio.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━
 📞 CONTACTO Y HORARIOS
